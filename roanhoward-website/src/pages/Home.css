@@ -1,36 +1,46 @@
 .home-container {
-  padding: 4rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #eeede8; /* light warm background */
-  min-height: 100vh;
-}
-
-.home-container h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  font-weight: 700;
-  transform: translateX(-800px);   /* shift right */
-  margin-bottom: 0.5rem;
+    display: flex;
+    background-color: #eeede8;
+    width: 100vw; /* full viewport width */
+    height: 100vh; /* full viewport height */
 }
 
 .about-section {
-  transform: translate(0px, -400px); /* shift right and down */
-  margin-bottom: 10rem;
-  max-width: 800px;
-  padding: 1rem;
-  text-align: left;
+    margin-top: 25vh; 
+    font-size:1rem;
+    text-align: center;
 }
 
 .about-header {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
+    font-size: 2rem;
+    font-weight: 600;
+
 }
 
 .about-text {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #333;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+.profile-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center image and name */
+  margin: 2rem;
+}
+
+.profile-image {
+  width: 220px;
+  height: 220px;
+  object-fit: cover; /* ensures square crop */
+  border-radius: 12px; /* optional: round corners */
+  margin-top: 25vh; /* moves it down vertically */
+}
+
+.name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-top: 1rem;
+  text-align: center;
 }

@@ -1,12 +1,13 @@
-// pages/Home.jsx
+
 import './Home.css';
-import VideoIntro from '../components/VideoIntro';
 
 export default function Home() {
   return (
     <div className="home-container">
-      <h1 className="name">Roan Howard</h1>
-      <VideoIntro />
+      <div className="profile-block">
+        <img className="profile-image" src="/Images/myface.jpg" alt="Roan Howard" />
+        <h1 className="name">Roan Howard</h1>
+    </div>
       <div className="about-section">
         <h2 className="about-header">About Me</h2>
         <p className="about-text">
