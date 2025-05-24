@@ -1,12 +1,17 @@
 /* VideoIntro.css */
 
 .video-intro {
-  margin-left: -95rem; /* Moves the entire image container to the left */
+  transform: translateX(-12rem);
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 3rem;
 }
+
 .intro-image {
   width: 100%;
-  max-width: 800px;
+  max-width: 300px;
   border-radius: 12px;
-  margin-top: 2rem;
-  margin-right: 0rem;
 }
