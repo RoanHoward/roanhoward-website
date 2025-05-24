@@ -1,0 +1,62 @@
+/* Reset default margins and add space for topbar */
+body {
+  margin: 0;
+  padding-top: 80px; /* Room for fixed nav */
+  font-family: sans-serif;
+  background-color: #fdfdfd;
+}
+
+/* Top navigation bar */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start; /* Align items to the left */
+  align-items: center;
+  background-color: white;
+  padding: 1rem 2rem;
+  z-index: 1000;
+  border-bottom: 1px solid #ddd;
+  gap: 2rem; /* Adds space between site name and nav links */
+}
+
+/* Clickable site name on the left */
+.nav-left .site-name {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #333;
+  text-decoration: none;
+}
+
+/* Navigation links */
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* Main content area below nav */
+.content {
+  padding: 2rem;
+}
+
+/* Clean up any old layout remnants */
+.container,
+.left-panel,
+.right-panel {
+  display: block;
+}

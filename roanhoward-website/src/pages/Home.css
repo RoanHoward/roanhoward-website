@@ -1,0 +1,16 @@
+.home-container {
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fffbe6; /* light warm background */
+  min-height: 100vh;
+}
+
+.home-container h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  margin-right: 95rem;   /* shift right */
+  margin-bottom: 0.5rem;
+}
