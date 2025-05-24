@@ -1,17 +1,12 @@
 /* VideoIntro.css */
 
 .video-intro {
-  transform: translateX(-12rem);
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 3rem;
+  transform: translateX(-800px);
 }
-
 .intro-image {
   width: 100%;
-  max-width: 300px;
+  max-width: 800px;
   border-radius: 12px;
+  margin-top: 2rem;
+  margin-right: 0rem;
 }

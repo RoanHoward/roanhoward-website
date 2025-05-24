@@ -11,12 +11,12 @@
   font-size: 3rem;
   margin-bottom: 1rem;
   font-weight: 700;
-  margin-right: 95rem;   /* shift right */
+  transform: translateX(-800px);   /* shift right */
   margin-bottom: 0.5rem;
 }
 
 .about-section {
-  margin-top: -28rem;
+  transform: translate(0px, -400px); /* shift right and down */
   margin-bottom: 10rem;
   max-width: 800px;
   padding: 1rem;
