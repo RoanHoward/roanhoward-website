@@ -1,6 +1,6 @@
 .home-container {
     display: flex;
-    background-color: #eeede8;
+    background-color: #f2f2f2d8;
     width: 100vw; /* full viewport width */
     height: 100vh; /* full viewport height */
 }

@@ -11,3 +11,8 @@
   text-decoration: none;
   color: #333;
 }
+.topbar {
+  background-color: #f2f2f2d8; /* match your page background */
+  border-bottom: none;       /* remove line if it's default */
+  box-shadow: none;          /* remove if shadow is being added */
+}
