@@ -6,15 +6,11 @@
 }
 
 .about-section {
-    margin-top: 25vh; 
+    width: 630px;
+    margin-top: 20vh; 
+    margin-left: 20vh;
     font-size:1rem;
-    text-align: center;
-}
-
-.about-header {
-    font-size: 2rem;
-    font-weight: 600;
-
+    text-align: left;
 }
 
 .about-text {
@@ -28,6 +24,8 @@
   flex-direction: column;
   align-items: center; /* center image and name */
   margin: 2rem;
+  margin-left: 15vh; /* moves it to the left */
+  margin-top: 30vh; /* moves it down */
 }
 
 .profile-image {
@@ -35,7 +33,6 @@
   height: 220px;
   object-fit: cover; /* ensures square crop */
   border-radius: 12px; /* optional: round corners */
-  margin-top: 25vh; /* moves it down vertically */
 }
 
 .name {
