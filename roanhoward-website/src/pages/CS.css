@@ -7,7 +7,7 @@
 .cs-projects-container {
   display: grid;
   margin-top: 0vh; /* Adds space from the top of the viewport */
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 2rem;
   padding: 3rem;
   background-color: #f4f4f4;
@@ -34,15 +34,24 @@
 
 .cs-project-card img {
   width: 100%;
-  height: auto;
+  height: 100px;
   border-radius: 16px;
-  object-fit: cover;
+  object-fit: contain;
   margin-bottom: 0.75rem;
+  display: inline-block;
 }
 
 .cs-project-card p {
   font-size: 0.9rem;
-  color: #555;
+  color: #979797;
+}
+
+.cs-project-card h4 {
+  font-size: .80rem;
+  font-weight: 300;
+  margin: 0.5rem 0 0.25rem;
+  color: #222;
+  text-align: center;
 }
 
 /* Placeholder for modal structure */
@@ -68,4 +77,19 @@
   height: 70vh;
   overflow-y: auto;
   box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+
+.cs-section-container {
+  padding: 2rem 3rem 1rem 3rem;
+}
+
+.cs-section-header {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #656565;
+  text-align: left;
+  margin: 0;
+  margin-left: 6vh;
+  margin-top: 5vh;
 }
