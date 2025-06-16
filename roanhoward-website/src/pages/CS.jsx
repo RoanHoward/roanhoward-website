@@ -2,7 +2,19 @@ import React, { useState } from 'react';
 import './CS.css';
 
 export default function CS() {
-  const [activeProject, setActiveProject] = useState(null);
+  const [showAllCoursework, setShowAllCoursework] = useState(false);
+  const [showAllProjects, setShowAllProjects] = useState(false);
+
+  // Add your programming languages here
+  const programmingLanguages = [
+    { name: 'Python', color: '#3572A5' },
+    { name: 'C++', color: '#f34b7d' },
+    { name: 'C', color: '#555555' },
+    { name: 'Assembly', color: '#e38c00' },
+    { name: 'JavaScript', color: '#f1e05a' },
+    { name: 'HTML', color: '#e34c26' },
+    { name: 'CSS', color: '#863480' },
+  ];
 
   const courseworkProjects = [
     {
@@ -80,40 +92,88 @@ export default function CS() {
     },
   ];
 
+  const ROW_SIZE = 5;
+  const courseworkFirstRow = courseworkProjects.slice(0, ROW_SIZE);
+  const courseworkRest = courseworkProjects.slice(ROW_SIZE);
+  const projectsFirstRow = personalProjects.slice(0, ROW_SIZE);
+  const projectsRest = personalProjects.slice(ROW_SIZE);
+
   return (
     <div className="cs-page">
+      <div className="cs-intro-block">
+        <p className="cs-intro-text">
+          I am passionate about computer science because it empowers me to solve real-world problems, build creative projects, and explore the intersection of technology and society. My journey has taken me from foundational programming to advanced AI, and I am always eager to learn more and collaborate with others.
+        </p>
+        <ul className="cs-lang-list">
+          {programmingLanguages.map((lang, idx) => (
+            <li key={lang.name} style={{ color: lang.color }}>
+              &#8226; {lang.name}
+            </li>
+          ))}
+        </ul>
+      </div>
 
       <h2 className="cs-section-header">CS-Related Coursework</h2>
-      <div className="cs-projects-container">
-        {courseworkProjects.map((project) => (
-          <div key={project.id} className="cs-project-card" onClick={() => setActiveProject(project)}>
-            <img src={project.image} alt={project.title} />
-            <h4>{project.title}</h4>
-            <p>{project.blurb}</p>
+      <div className="cs-projects-wrapper">
+        <div className="cs-projects-container single-row">
+          {courseworkFirstRow.map((project) => (
+            <div key={project.id} className="cs-project-card">
+              <img src={project.image} alt={project.title} />
+              <h4>{project.title}</h4>
+              <p>{project.blurb}</p>
+            </div>
+          ))}
+        </div>
+        {courseworkRest.length > 0 && (
+          <div className="see-more-row">
+            <button className="see-more-btn" onClick={() => setShowAllCoursework((v) => !v)}>
+              {showAllCoursework ? '⌃' : '⌵'}
+            </button>
           </div>
-        ))}
+        )}
+        {showAllCoursework && (
+          <div className="cs-projects-container single-row">
+            {courseworkRest.map((project) => (
+              <div key={project.id} className="cs-project-card">
+                <img src={project.image} alt={project.title} />
+                <h4>{project.title}</h4>
+                <p>{project.blurb}</p>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       <h2 className="cs-section-header">CS-Personal Projects</h2>
-      <div className="cs-projects-container">
-        {personalProjects.map((project) => (
-          <div key={project.id} className="cs-project-card" onClick={() => setActiveProject(project)}>
-            <img src={project.image} alt={project.title} />
-            <h4>{project.title}</h4>
-            <p>{project.blurb}</p>
-          </div>
-        ))}
-      </div>
-
-      {activeProject && (
-        <div className="cs-modal" onClick={() => setActiveProject(null)}>
-          <div className="cs-modal-content" onClick={(e) => e.stopPropagation()}>
-            <h3>{activeProject.title}</h3>
-            <p>{activeProject.details}</p>
-            <button onClick={() => setActiveProject(null)}>Close</button>
-          </div>
+      <div className="cs-projects-wrapper">
+        <div className="cs-projects-container single-row">
+          {projectsFirstRow.map((project) => (
+            <div key={project.id} className="cs-project-card">
+              <img src={project.image} alt={project.title} />
+              <h4>{project.title}</h4>
+              <p>{project.blurb}</p>
+            </div>
+          ))}
         </div>
-      )}
+        {projectsRest.length > 0 && (
+          <div className="see-more-row">
+            <button className="see-more-btn" onClick={() => setShowAllProjects((v) => !v)}>
+              {showAllProjects ? '⌃' : '⌵'}
+            </button>
+          </div>
+        )}
+        {showAllProjects && (
+          <div className="cs-projects-container single-row">
+            {projectsRest.map((project) => (
+              <div key={project.id} className="cs-project-card">
+                <img src={project.image} alt={project.title} />
+                <h4>{project.title}</h4>
+                <p>{project.blurb}</p>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
