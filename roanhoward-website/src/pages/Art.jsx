@@ -1,67 +1,32 @@
+import React from 'react';
 import './Art.css';
 
-export default function Art() {
-  // Example data structure for art by year
-  const artTimeline = [
-    {
-      year: 2025,
-      images: [
-        { src: '/Images/Charcoal.jpeg', title: 'control' },
-        { type: 'raven-triptych', images: [
-          { src: '/Images/Raven1.jpeg' },
-          { src: '/Images/Raven2.jpeg' },
-          { src: '/Images/Raven3.jpeg' }
-        ], title: 'Raven (Triptych)' },
-        { src: '/Images/Head Rest 6 copy.jpg', title: 'Head Rest' },
-        { src: '/Images/TrueNature.jpg', title: 'True Nature' },
-      ],
-    },
-    {
-      year: 2022,
-      images: [
-        { src: '/art/painting3.jpg', title: '' },
-        { src: '/art/painting4.jpg', title: '' },
-      ],
-    },
-  ];
-
+const Art = () => {
   return (
-    <div className="art-page">
-      <div className="artist-statement-horizontal">
-        <div className="artist-statement-line top"></div>
-        <div className="artist-statement-center">
-          <span className="artist-statement-text">
-            My art explores the intersection of memory, place, and emotion. I use color, texture, and form to capture fleeting moments and the stories they hold. Each piece is a reflection of my journey and a window into the worlds I imagine.
-          </span>
-        </div>
-        <div className="artist-statement-line bottom"></div>
+    <div className="art-container" style={{ position: 'relative', width: '100%', height: '1200px' }}>
+      <div className="image-tile" style={{ width: '300px', position: 'absolute', top: '500px', left: '40px' }}>
+        <img src="/Images/Charcoal.jpeg" alt="Control" />
       </div>
-      <div className="art-timeline">
-        {artTimeline.map((section) => (
-          <div key={section.year} className="art-timeline-section">
-            <div className="art-timeline-year">{section.year}</div>
-            <div className="art-timeline-images">
-              {section.images.map((img, idx) => (
-                img.type === 'raven-triptych' ? (
-                  <div className="raven-triptych-block" key={img.title + idx}>
-                    <div className="raven-triptych-images">
-                      {img.images.map((ravenImg, rIdx) => (
-                        <img src={ravenImg.src} alt={img.title + ' ' + (rIdx+1)} className="raven-triptych-image" key={ravenImg.src} />
-                      ))}
-                    </div>
-                    <div className="art-image-title raven-triptych-title">{img.title}</div>
-                  </div>
-                ) : (
-                  <div className="art-image-block" key={img.src + idx}>
-                    <img src={img.src} alt={img.title} className="art-image" />
-                    <div className="art-image-title">{img.title}</div>
-                  </div>
-                )
-              ))}
-            </div>
-          </div>
-        ))}
+      <div className="image-tile" style={{ width: '250px', position: 'absolute', top: '15px', left: '400px' }}>
+        <img src="/Images/Raven1.jpeg" alt="Raven I" />
+      </div>
+      <div className="image-tile" style={{ width: '260px', position: 'absolute', top: '15px', left: '680px' }}>
+        <img src="/Images/Raven2.jpeg" alt="Raven II" />
+      </div>
+      <div className="image-tile" style={{ width: '270px', position: 'absolute', top: '15px', left: '980px' }}>
+        <img src="/Images/Raven3.jpeg" alt="Raven III" />
+      </div>
+      <div className="image-tile" style={{ width: '300px', position: 'absolute', top: '15px', left: '40px' }}>
+        <img src="/Images/Head Rest 6 copy.jpg" alt="Head Rest" />
+      </div>
+      <div className="image-tile" style={{ width: '320px', position: 'absolute', top: '265px', left: '1000px' }}>
+        <img src="/Images/TrueNature.jpg" alt="True Nature" />
+      </div>
+      <div className="image-tile" style={{ width: '600px', position: 'absolute', top: '255px', left: '370px' }}>
+        <img src="/Images/statment.png" alt="New Artwork" />
       </div>
     </div>
   );
-}
+};
+
+export default Art;

@@ -1,6 +1,6 @@
 .home-container {
     display: flex;
-    background-color: #f2f2f2d8;
+    background-color: #ffffffd8;
     width: 100vw; /* full viewport width */
     height: 100vh; /* full viewport height */
 }
@@ -8,15 +8,28 @@
 .about-section {
     width: 630px;
     margin-top: 20vh; 
-    margin-left: 20vh;
+    margin-left: 10vh;
     font-size:1rem;
     text-align: left;
 }
 
 .about-text {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #333;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.about-heading {
+  font-size: 2.3rem;
+  font-weight: bold;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  margin-bottom: 1rem;
+  color: #111;
 }
 
 .profile-block {
@@ -29,10 +42,10 @@
 }
 
 .profile-image {
-  width: 220px;
-  height: 220px;
+  height: auto;
+  width: 300px; /* fixed width for square crop */
   object-fit: cover; /* ensures square crop */
-  border-radius: 12px; /* optional: round corners */
+  border-radius: 4px; /* optional: round corners */
 }
 
 .name {
@@ -40,4 +53,13 @@
   font-weight: 700;
   margin-top: 1rem;
   text-align: center;
+}
+
+.full-width-image {
+  width: 100vw;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  margin: 1.5rem 0 0 0;
+  padding: 0;
 }

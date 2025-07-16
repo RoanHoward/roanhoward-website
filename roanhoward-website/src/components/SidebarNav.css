@@ -1,18 +1,77 @@
-.sidebar ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.sidebar li {
-  margin-bottom: 8px;
-}
-
-.sidebar a {
+.navbar {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #ffffff;
+  background-color: #ffffff;
   text-decoration: none;
-  color: #333;
+  margin-top: 1rem; ;
 }
-.topbar {
-  background-color: #f2f2f2d8; /* match your page background */
-  border-bottom: none;       /* remove line if it's default */
-  box-shadow: none;          /* remove if shadow is being added */
+
+.nav-title {
+  position: absolute;
+  top: 0px;
+  left: 35%;
+  font-weight: bold;
+  font-size: 3rem;
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: #000000;
+  text-decoration: none;
+}
+
+.nav-links {
+  margin-top: -10px;
+  display: flex;
+  font-size: 1rem;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 1rem;
+  padding-left: 1rem;
+  text-decoration: none;
+}
+
+.nav-links a {
+  display: inline-block;
+  color: black;
+  font-size: 1.4rem;
+  text-decoration: none;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  transition: transform 0.2s ease;
+}
+
+.nav-links a:hover {
+  transform: rotate(-5deg) scale(1.05);
+  text-decoration: none;
+}
+
+.nav-icon img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  margin-left: 10px;
+  cursor: pointer;
+  vertical-align: middle;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.nav-icon img:hover {
+  transform: rotate(-5deg) scale(1.05);
+}
+
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
 }

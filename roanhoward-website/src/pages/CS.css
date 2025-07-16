@@ -1,168 +1,109 @@
-.cs-page {
-  background-color: #f4f4f4; /* or whatever you want */
-  min-height: 100vh;
-  padding-top: 8vh; /* space below nav */
-  padding-bottom: 10vh;
-}
 
-.cs-project-card {
-  background-color: white;
-  width: 200px;
-  height: 200px;
-  border-radius: 24px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 1rem;
-}
 
-.cs-project-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-}
-
-.cs-project-card img {
-  width: 130px;
-  height: 100px;
-  border-radius: 16px;
-  object-fit: contain;
-  margin-bottom: 0.75rem;
-  display: inline-block;
-}
-
-.cs-project-card p {
-  font-size: 0.9rem;
-  color: #979797;
-}
-
-.cs-project-card h4 {
-  font-size: .80rem;
-  font-weight: 300;
-  margin: 0.5rem 0 0.25rem;
-  color: #222;
-  text-align: center;
-}
-
-/* Placeholder for modal structure */
-.cs-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0,0,0,0.6);
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.cs-modal-content {
-  margin-top: 10vh;
-  margin-left: 20vh;
-  background: rgb(240, 240, 240);
+.cs-container {
   padding: 2rem;
-  border-radius: 20px;
-  max-width: 1100px;
-  height: 70vh;
-  overflow-y: auto;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  background-color: #ffffff;
+  color: white;
 }
 
-
-.cs-section-header {
-  font-size: 1.1rem;
+.cs-title {
+  font-size: 2.5rem;
   font-weight: bold;
-  color: #000000;
+  margin-bottom: 2rem;
   text-align: left;
-  margin: 0;
-  margin-left: 6vh;
-  margin-top: 8vh;
-}
-
-.cs-projects-wrapper { 
-  max-width: 950px;
-  margin-top: 3vh;
-  margin-left: 6vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.cs-projects-container.single-row {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 2rem;
-  background-color: #f6f6f6;
-  width: 1100px;
-  min-width: 0;
-}
-
-.see-more-row {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.see-more-btn {
-  background: none;
-  border: none;
-  color: #888;
-  font-size: 2rem;
+  color: #1a1c23;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
   font-style: normal;
-  cursor: pointer;
-  margin-left: 20vh;
-  border-radius: 50%;
-  transition: background 0.2s, color 0.2s;
-  outline: none;
-  line-height: 1;
+}
+
+.expertise-section {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  font-family: 'Share Tech Mono', monospace;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
-.cs-intro-block {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto 3vh auto;
+.expertise-header {
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.expertise-card {
+  background-color: #56815e;
+  padding: 1.5rem;
+  border-radius: 12px;
+  flex: 1 1 30%;
+  min-width: 280px;
+}
+
+.tech-stack {
+  margin-top: 1rem;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
-.cs-intro-text {
-  text-align: center;
-  font-size: 1.15rem;
-  color: #222;
-  font-weight: 400;
-  margin-bottom: 1.5rem;
-  margin-top: 8vh;
-  max-width: 700px;
-}
-
-.cs-lang-list {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 2.2rem;
-  list-style: none;
-  padding: 0;
-  margin: 0 0 3vh 0;
-}
-
-.cs-lang-list li {
-  font-size: 1.1rem;
+.tech-stack span {
+  background-color: white;
+  color: black;
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  font-style: italic;
-  letter-spacing: 0.5px;
+}
+
+.expertise-card h2 {
+  margin-bottom: 1rem; /* You can increase this if you want more space */
+}
+
+
+.projects-section {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: color 0.2s;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+}
+
+.project-card {
+  background-color: #ffffff;
+  color: #1a1c23;
+  padding: 1.5rem;
+  border-radius: 12px;
+  flex: 1 1 45%;
+  min-width: 280px;
+}
+
+.project-card h2 {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.project-card p {
+  font-size: 1rem;
+  line-height: 1.5;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.project-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+.projects-header {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  margin-top: 10rem;
+  margin-bottom: 1rem;
 }

@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SidebarNav from './components/SidebarNav';
 
-import Resume from './pages/Resume';
 import CS from './pages/CS';
 import Film from './pages/Film';
 import Art from './pages/Art';
@@ -15,7 +14,6 @@ function App() {
       <SidebarNav /> {/* Always at top */}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/resume" element={<Resume />} />
         <Route path="/cs" element={<CS />} />
         <Route path="/film" element={<Film />} />
         <Route path="/art" element={<Art />} />

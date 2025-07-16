@@ -1,179 +1,69 @@
-import React, { useState } from 'react';
+
+import React from 'react';
 import './CS.css';
 
 export default function CS() {
-  const [showAllCoursework, setShowAllCoursework] = useState(false);
-  const [showAllProjects, setShowAllProjects] = useState(false);
-
-  // Add your programming languages here
-  const programmingLanguages = [
-    { name: 'Python', color: '#3572A5' },
-    { name: 'C++', color: '#f34b7d' },
-    { name: 'C', color: '#555555' },
-    { name: 'Assembly', color: '#e38c00' },
-    { name: 'JavaScript', color: '#f1e05a' },
-    { name: 'HTML', color: '#e34c26' },
-    { name: 'CSS', color: '#863480' },
-  ];
-
-  const courseworkProjects = [
-    {
-      id: 101,
-      image: '/Images/Slogo.webp',
-      title: 'CS106A - Programming Methodology',
-      blurb: '',
-      details: 'Covered Python basics, control flow, functions, and simple graphics using Stanford libraries.',
-    },
-    {
-      id: 102,
-      image: '/Images/Slogo.webp',
-      title: 'CS107 - Computer Systems',
-      blurb: '',
-      details: 'Learned about memory, pointers, C programming, and system-level operations.',
-    },
-    {
-      id: 103,
-      image: '/Images/Slogo.webp',
-      title: 'CS109 - Introduction to Probability',
-      blurb: '',
-      details: 'Explored random variables, distributions, and statistical inference.',
-    },
-    {
-      id: 104,
-      image: '/Images/Slogo.webp',
-      title: 'CS161 - Design and Analysis of Algorithms',
-      blurb: '',
-      details: 'Studied sorting algorithms, graph algorithms, and complexity analysis.',
-    },
-    {
-      id: 105,
-      image: '/Images/Slogo.webp',
-      title: 'CS224N - Natural Language Processing with Deep Learning',
-      blurb: '',
-      details: 'Covered word embeddings, RNNs, and transformer models.',
-    },
-    {
-      id: 106,
-      image: '/Images/Slogo.webp',
-      title: 'CS231N - Convolutional Neural Networks for Visual Recognition',
-      blurb: '',
-      details: 'Learned about CNN architectures, training techniques, and applications in image recognition.',
-    },
-  ];
-
-  const personalProjects = [
-    {
-      id: 1,
-      image: '/Images/stanfanator.png',
-      title: 'Stanfanator',
-      blurb: '',
-      details: 'Detailed info about Project One goes here.'
-    },
-    {
-      id: 2,
-      image: '/images/project2.jpg',
-      title: 'Project Two',
-      blurb: '',
-      details: 'Detailed info about Project Two goes here.'
-    },
-    {
-      id: 3,
-      image: '/images/project3.jpg',
-      title: 'Project Three',
-      blurb: '',
-      details: 'Detailed info about Project Three goes here.'
-    },
-    {
-      id: 4,
-      image: '/images/project4.jpg',
-      title: 'Project Four',
-      blurb: '',
-      details: 'Detailed info about Project Four goes here.'
-    },
-  ];
-
-  const ROW_SIZE = 5;
-  const courseworkFirstRow = courseworkProjects.slice(0, ROW_SIZE);
-  const courseworkRest = courseworkProjects.slice(ROW_SIZE);
-  const projectsFirstRow = personalProjects.slice(0, ROW_SIZE);
-  const projectsRest = personalProjects.slice(ROW_SIZE);
-
   return (
-    <div className="cs-page">
-      <div className="cs-intro-block">
-        <p className="cs-intro-text">
-          I am passionate about computer science because it empowers me to solve real-world problems, build creative projects, and explore the intersection of technology and society. My journey has taken me from foundational programming to advanced AI, and I am always eager to learn more and collaborate with others.
-        </p>
-        <ul className="cs-lang-list">
-          {programmingLanguages.map((lang, idx) => (
-            <li key={lang.name} style={{ color: lang.color }}>
-              &#8226; {lang.name}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <h2 className="cs-section-header">CS-Related Coursework</h2>
-      <div className="cs-projects-wrapper">
-        <div className="cs-projects-container single-row">
-          {courseworkFirstRow.map((project) => (
-            <div key={project.id} className="cs-project-card">
-              <img src={project.image} alt={project.title} />
-              <h4>{project.title}</h4>
-              <p>{project.blurb}</p>
-            </div>
-          ))}
+    <div className="cs-container">
+      <h1 className="cs-title">Expertise</h1>
+      <div className="expertise-section">
+        <div className="expertise-card">
+          <h2 className="expertise-header">Full-Stack Web Development</h2>
+          <p>
+            I have built a diverse array of web applications from scratch using modern technologies such as React and SpringBoot.
+            I have a strong proficiency in the SDLC process as well as frontend and backend development.
+          </p>
+          <div className="tech-stack">
+            <span>React</span><span>TypeScript</span><span>JavaScript</span>
+            <span>HTML5</span><span>CSS3</span><span>Java</span>
+            <span>C#</span><span>SQL</span><span>PostgreSQL</span>
+          </div>
         </div>
-        {courseworkRest.length > 0 && (
-          <div className="see-more-row">
-            <button className="see-more-btn" onClick={() => setShowAllCoursework((v) => !v)}>
-              {showAllCoursework ? '⌃' : '⌵'}
-            </button>
-          </div>
-        )}
-        {showAllCoursework && (
-          <div className="cs-projects-container single-row">
-            {courseworkRest.map((project) => (
-              <div key={project.id} className="cs-project-card">
-                <img src={project.image} alt={project.title} />
-                <h4>{project.title}</h4>
-                <p>{project.blurb}</p>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
 
-      <h2 className="cs-section-header">CS-Personal Projects</h2>
-      <div className="cs-projects-wrapper">
-        <div className="cs-projects-container single-row">
-          {projectsFirstRow.map((project) => (
-            <div key={project.id} className="cs-project-card">
-              <img src={project.image} alt={project.title} />
-              <h4>{project.title}</h4>
-              <p>{project.blurb}</p>
-            </div>
-          ))}
+        <div className="expertise-card">
+          <h2 className="expertise-header">Automation & Scripting</h2>
+          <p>
+            I have experience automating system workflows and repetitive tasks using open-source scripting solutions.
+            My work has saved significant manual hours and strengthened my ability to identify process bottlenecks and streamline backend operations.
+          </p>
+          <div className="tech-stack">
+            <span>Git</span><span>GitHub Actions</span><span>Docker</span>
+            <span>Azure</span><span>Linux</span><span>Windows</span>
+            <span>Selenium</span>
+          </div>
         </div>
-        {projectsRest.length > 0 && (
-          <div className="see-more-row">
-            <button className="see-more-btn" onClick={() => setShowAllProjects((v) => !v)}>
-              {showAllProjects ? '⌃' : '⌵'}
-            </button>
+
+        <div className="expertise-card">
+          <h2 className="expertise-header">Data Science & Research</h2>
+          <p>
+            Through coursework and lab research, I’ve applied machine learning, data visualization, and statistical techniques to real-world problems.
+            I’m comfortable working with structured data and conducting technical investigations to inform design and system improvements.
+          </p>
+          <div className="tech-stack">
+            <span>Python</span><span>Pytorch</span><span>NumPy</span><span>Sci-kit</span>
           </div>
-        )}
-        {showAllProjects && (
-          <div className="cs-projects-container single-row">
-            {projectsRest.map((project) => (
-              <div key={project.id} className="cs-project-card">
-                <img src={project.image} alt={project.title} />
-                <h4>{project.title}</h4>
-                <p>{project.blurb}</p>
-              </div>
-            ))}
-          </div>
-        )}
+        </div>
+      </div>
+      <div className="projects-header">
+        <h1 className="cs-title">Personal Projects</h1>
+      </div>
+      <div className="projects-section">
+        <div className="project-card">
+          <img src="/Images/Personal_website.png" alt="Sentra Project" className="project-image" />
+          <h2>Personal Website</h2>
+          <p>
+            This personal website was built using React.js and styled with custom CSS to showcase my technical projects, background, and design abilities. It demonstrates front-end development skills including responsive layout design, component structuring, and dynamic asset integration.
+          </p>
+        </div>
+        <div className="project-card">
+          <img src="/Images/stanfanator.png" alt="Chess Game" className="project-image" />
+          <h2>Stanfanator</h2>
+          <p>
+            Developed a probability-based person-guessing game using React and Node.js for the frontend and Python Flask for the backend, where users identify Stanford students based on clues dynamically generated from a database.
+          </p>
+        </div>
       </div>
     </div>
   );
 }
+
