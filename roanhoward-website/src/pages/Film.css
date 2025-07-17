@@ -1,6 +1,6 @@
 .film-hero {
   background-image: url('/Images/socialnetwork.png');
-  background-attachment: fixed; /* This enables the parallax effect */
+  background-attachment: fixed;
   background-size: cover;
   background-position: center;
   color: white;
@@ -8,33 +8,27 @@
   padding: 6rem 4rem;
   font-family: 'Georgia', serif;
   height: 60vh;
-
-  display: flex; /* fixed this from "auto" */
+  display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .film-hero h1 {
+  font-family: Georgia, Times, 'Times New Roman', serif;
+  font-weight: 300;
+  font-style: normal;
   font-size: 2.5rem;
   margin: 0;
   font-weight: 700;
 }
 
 .film-hero h2 {
+  font-family: "Playfair Display", serif;
+  font-weight: 300;
+  font-style: normal;
   font-size: 2rem;
   font-style: italic;
   margin: 0.5rem 0 2rem;
-}
-
-.film-hero button {
-  background-color: #e74c3c;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: bold;
-  margin-top: 1rem;
 }
 
 .review-section {
@@ -44,46 +38,14 @@
 }
 
 .review-section h2 {
-  margin-top: 0rem;
+  margin: 0 0 2rem;
   font-size: 2rem;
-  margin-bottom: 2rem;
-  font-family: 'Georgia', serif;
+  font-family: "Playfair Display", serif;
+  font-weight: 300;
+  font-style: normal;
 }
 
-.favorites-section {
-  padding: 3rem 4rem;
-  background-color: #fff;
-  color: #000;
-}
-
-.favorites-section h2 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  font-family: 'Georgia', serif;
-}
-
-.favorites-grid {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.favorites-card {
-  width: 200px;
-  text-align: center;
-}
-
-.favorites-card img {
-  width: 100%;
-  border-radius: 5px;
-}
-
-.favorites-card h3 {
-  margin-top: 0.5rem;
-  font-size: 1rem;
-  font-weight: normal;
-}
-
+/* Grid for academic reviews */
 .review-grid {
   display: flex;
   gap: 2rem;
@@ -103,5 +65,46 @@
 .review-card h3 {
   margin-top: 0.5rem;
   font-size: 1rem;
-  font-weight: normal;
+  font-family: "Playfair Display", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Horizontal scroll for movie cards */
+.movie-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  gap: 1.5rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Firefox */
+}
+
+.movie-scroll-container::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.scroll-movie-card {
+  flex: 0 0 auto;
+  width: 200px;
+  scroll-snap-align: start;
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.scroll-movie-card img {
+  width: 100%;
+  transition: transform 0.2s ease-in-out;
+}
+
+.scroll-movie-card:hover img {
+  transform: scale(1.014) rotateZ(0.3deg);
+}
+
+.scroll-movie-card h3 {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-style: normal;
 }
