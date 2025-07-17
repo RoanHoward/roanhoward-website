@@ -31,13 +31,13 @@ function SidebarNav() {
         <a href="/Images/Resume.pdf" download className="nav-icon">
           <img src="/Images/resume_icon.png" alt="Download Resume" />
         </a>
-        <a href="https://www.linkedin.com/in/roanhoward" target="_blank" rel="noopener noreferrer" className="nav-icon">
+        <a href="http://www.linkedin.com/in/roan-howard-b7647a28b" target="_blank" rel="noopener noreferrer" className="nav-icon">
           <img src="/Images/linkedin.jpg" alt="LinkedIn" />
         </a>
         <a href="https://github.com/roanhoward" target="_blank" rel="noopener noreferrer" className="nav-icon">
           <img src="/Images/github1.png" alt="GitHub" />
         </a>
-        <a href="mailto:roan.howard@example.com" className="nav-icon">
+        <a href="mailto:roanahoward@gmail.com" className="nav-icon">
           <img src="/Images/email1.jpg" alt="Email" />
         </a>
       </div>
@@ -47,10 +47,10 @@ function SidebarNav() {
         <NavLink to="/cs" onClick={toggleMenu}>CS</NavLink>
         <NavLink to="/film" onClick={toggleMenu}>Film</NavLink>
         <NavLink to="/art" onClick={toggleMenu}>Art</NavLink>
-        <a href="/Images/Resume.pdf" download>Download Resume</a>
-        <a href="https://www.linkedin.com/in/roanhoward" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="/Images/Resume.pdf" download>Resume</a>
+        <a href="http://www.linkedin.com/in/roan-howard-b7647a28b" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a href="https://github.com/roanhoward" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="mailto:roan.howard@example.com">Email</a>
+        <a href="mailto:roanahoward@gmail.com">Email</a>
       </div>
     </nav>
   );
