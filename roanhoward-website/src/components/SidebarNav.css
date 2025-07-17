@@ -1,67 +1,64 @@
+/* Base navbar setup */
 .navbar {
-  position: relative;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
-  padding: 1rem;
-  border-bottom: 1px solid #ffffff;
-  background-color: #ffffff;
-  text-decoration: none;
-  margin-top: 1rem; ;
-}
-
-.nav-title {
-  position: absolute;
-  top: 0px;
-  left: 35%;
-  font-weight: bold;
-  font-size: 3rem;
-  text-align: center;
-  font-family: "Ubuntu", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  color: #000000;
-  text-decoration: none;
-}
-
-.nav-links {
-  margin-top: -10px;
-  display: flex;
-  font-size: 1rem;
-  font-family: "Ubuntu", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  justify-content: flex-start;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  position: relative;
   width: 100%;
+}
+
+/* Left-side navigation links */
+.nav-links {
+  display: flex;
+  align-items: center;
   gap: 1rem;
-  padding-left: 1rem;
+  flex: 0 0 auto;
+  min-width: 200px;
   text-decoration: none;
 }
 
 .nav-links a {
-  display: inline-block;
   color: black;
-  font-size: 1.4rem;
-  text-decoration: none;
   font-family: "Ubuntu", sans-serif;
   font-weight: 700;
   font-style: normal;
+  font-size: clamp(0.5rem, 2.5vw, 1.4rem);
+  text-decoration: none;
   transition: transform 0.2s ease;
 }
 
 .nav-links a:hover {
   transform: rotate(-5deg) scale(1.05);
+   text-decoration: none;
+}
+
+/* Center title */
+.nav-title {
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-weight: 700;
+  font-family: "Ubuntu", sans-serif;
+  color: #000000;
   text-decoration: none;
+  margin: 0 auto;
+  white-space: nowrap;
+}
+
+/* Right-side icons */
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 0 0 auto;
+  min-width: 200px;
+  justify-content: flex-end;
 }
 
 .nav-icon img {
-  width: 45px;
-  height: 45px;
+  width: clamp(20px, 5vw, 40px);
+  height: clamp(20px, 5vw, 40px);
   object-fit: contain;
-  margin-left: 10px;
   cursor: pointer;
-  vertical-align: middle;
-  display: inline-block;
   transition: transform 0.2s ease;
 }
 
@@ -69,9 +66,53 @@
   transform: rotate(-5deg) scale(1.05);
 }
 
-.nav-icons {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-left: auto;
+/* Hamburger menu button for small screens */
+.menu-button {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Mobile dropdown menu */
+.dropdown-menu {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  width: 100%;
+  padding: 1rem;
+}
+
+.dropdown-menu a {
+  padding: 0.5rem 0;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-family: "Ubuntu", sans-serif;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  .nav-links,
+  .nav-icons {
+    display: none;
+  }
+
+  .menu-button {
+    display: block;
+    position: absolute;
+    left: 1rem;
+  }
+
+  .nav-title {
+    margin: 0 auto;
+  }
+
+  .dropdown-menu.show {
+    display: flex;
+  }
 }

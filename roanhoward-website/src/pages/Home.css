@@ -1,16 +1,32 @@
+/* Container setup */
 .home-container {
-    display: flex;
-    background-color: #ffffffd8;
-    width: 100vw; /* full viewport width */
-    height: 100vh; /* full viewport height */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #ffffffd8;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 2rem;
+  box-sizing: border-box;
+  flex-wrap: wrap;
 }
 
+/* Text section */
 .about-section {
-    width: 630px;
-    margin-top: 20vh; 
-    margin-left: 10vh;
-    font-size:1rem;
-    text-align: left;
+  max-width: 650px;
+  padding: 1.5rem;
+  flex: 1 1 300px;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.about-heading {
+  font-size: 2.3rem;
+  font-weight: 700;
+  font-family: "Ubuntu", sans-serif;
+  margin-bottom: 1rem;
+  color: #111;
 }
 
 .about-text {
@@ -19,33 +35,22 @@
   color: #333;
   font-family: "Ubuntu", sans-serif;
   font-weight: 400;
-  font-style: normal;
 }
 
-.about-heading {
-  font-size: 2.3rem;
-  font-weight: bold;
-  font-family: "Ubuntu", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  margin-bottom: 1rem;
-  color: #111;
-}
-
+/* Profile image block */
 .profile-block {
+  flex: 1 1 300px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* center image and name */
-  margin: 2rem;
-  margin-left: 15vh; /* moves it to the left */
-  margin-top: 30vh; /* moves it down */
+  align-items: center;
+  padding: 1.5rem;
 }
 
 .profile-image {
+  width: 300px;
   height: auto;
-  width: 300px; /* fixed width for square crop */
-  object-fit: cover; /* ensures square crop */
-  border-radius: 4px; /* optional: round corners */
+  object-fit: cover;
+  border-radius: 4px;
 }
 
 .name {
@@ -53,13 +58,50 @@
   font-weight: 700;
   margin-top: 1rem;
   text-align: center;
+  font-family: "Ubuntu", sans-serif;
 }
 
+/* Full-width section image */
 .full-width-image {
   width: 100vw;
   height: auto;
   object-fit: cover;
   display: block;
-  margin: 1.5rem 0 0 0;
-  padding: 0;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+
+/* Responsive stacking */
+@media (max-width: 768px) {
+  .home-container {
+    flex-direction: column-reverse;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .about-section,
+  .profile-block {
+    width: 100%;
+    max-width: 90%;
+    padding: 1rem 0;
+  }
+
+  .about-heading {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .about-text {
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  .name {
+    font-size: 1.5rem;
+  }
+
+  .profile-image {
+    width: 80%;
+    max-width: 280px;
+  }
 }
