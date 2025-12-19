@@ -1,8 +1,8 @@
 .film-hero {
-  background-image: url('/Images/socialnetwork.png');
-  background-attachment: fixed;
+  background-image: url('/Images/SN.png');
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   color: white;
   text-align: left;
   padding: 6rem 4rem;
@@ -11,6 +11,19 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: 2rem;
+  /* Improve image rendering quality */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Use fixed attachment only on larger screens where it works better */
+@media (min-width: 1024px) {
+  .film-hero {
+    background-attachment: fixed;
+  }
 }
 
 .film-hero h1 {
@@ -68,6 +81,19 @@
   font-family: "Playfair Display", serif;
   font-weight: 300;
   font-style: normal;
+}
+
+.pdf-link {
+  color: #344a53;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 50;
+  transition: color 0.2s ease;
+}
+
+.pdf-link:hover {
+  color: #000;
+  text-decoration: underline;
 }
 
 /* Horizontal scroll for movie cards */
