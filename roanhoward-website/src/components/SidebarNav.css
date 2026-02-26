@@ -1,105 +1,194 @@
-/* Base navbar setup */
+/* ── Navbar ─────────────────────────────────────────────────────── */
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-height);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 1rem;
-  position: relative;
-  width: 100%;
-  z-index: 100;
+  padding: 0 2rem;
+  z-index: 200;
+  background: rgba(246, 244, 239, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
 }
 
-/* Left-side navigation links */
+.navbar--scrolled {
+  border-bottom-color: var(--color-border);
+}
+
+/* ── Left nav links ─────────────────────────────────────────────── */
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  flex: 0 0 auto;
-  min-width: 200px;
-  text-decoration: none;
+  gap: 1.75rem;
 }
 
-.nav-links a {
-  color: black;
-  font-family: "Ubuntu", sans-serif;
+.nav-link {
+  position: relative;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-sub);
+  text-decoration: none;
+  padding-bottom: 2px;
+  transition: color 0.2s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: var(--color-green);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s var(--ease-out-expo);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--color-text);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+}
+
+/* ── Center brand ───────────────────────────────────────────────── */
+.nav-brand {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-sans);
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
   font-weight: 700;
-  font-style: normal;
-  font-size: clamp(0.5rem, 2.5vw, 1.4rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text);
   text-decoration: none;
-  transition: transform 0.2s ease;
-}
-
-.nav-links a:hover {
-  transform: rotate(-5deg) scale(1.05);
-   text-decoration: none;
-}
-
-/* Center title */
-.nav-title {
-  font-size: clamp(1.5rem, 4vw, 3rem);
-  font-weight: 700;
-  font-family: "Ubuntu", sans-serif;
-  color: #000000;
-  text-decoration: none;
-  margin: 0 auto;
   white-space: nowrap;
+  transition: opacity 0.2s ease;
 }
 
-/* Right-side icons */
+.nav-brand:hover {
+  opacity: 0.6;
+}
+
+/* ── Right icon links ───────────────────────────────────────────── */
 .nav-icons {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  flex: 0 0 auto;
-  min-width: 200px;
-  justify-content: flex-end;
+  gap: 1.25rem;
+  margin-left: auto;
 }
 
-.nav-icon img {
-  width: clamp(20px, 5vw, 40px);
-  height: clamp(20px, 5vw, 40px);
-  object-fit: contain;
-  cursor: pointer;
-  transition: transform 0.2s ease;
+.nav-icon-link {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.3s var(--ease-out-expo);
+  display: inline-block;
 }
 
-.nav-icon img:hover {
-  transform: rotate(-5deg) scale(1.05);
+.nav-icon-link:hover {
+  color: var(--color-green);
 }
 
-/* Hamburger menu button for small screens */
+/* ── Hamburger ──────────────────────────────────────────────────── */
 .menu-button {
   display: none;
-  font-size: 1.8rem;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  cursor: pointer;
   background: none;
   border: none;
-  cursor: pointer;
-  color: black;
+  z-index: 201;
 }
 
-/* Mobile dropdown menu */
-.dropdown-menu {
-  display: none;
-  flex-direction: column;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: white;
+.menu-button span {
+  display: block;
   width: 100%;
-  padding: 1rem;
-  z-index: 101;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 2px;
+  background: var(--color-text);
+  border-radius: 2px;
+  transition: transform 0.3s var(--ease-out-expo), opacity 0.3s ease;
+  transform-origin: center;
 }
 
-.dropdown-menu a {
-  padding: 0.5rem 0;
+.menu-button--open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-button--open span:nth-child(2) { opacity: 0; }
+.menu-button--open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Mobile dropdown ────────────────────────────────────────────── */
+.nav-dropdown {
+  position: fixed;
+  top: var(--nav-height);
+  left: 0;
+  width: 100%;
+  background: rgba(246, 244, 239, 0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  flex-direction: column;
+  padding: 0 1.5rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s var(--ease-out-expo), padding 0.3s ease;
+  border-bottom: 1px solid var(--color-border);
+  z-index: 199;
+}
+
+.nav-dropdown--open {
+  max-height: 520px;
+  padding: 1.5rem;
+}
+
+.dropdown-link {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-sub);
   text-decoration: none;
-  color: black;
-  font-weight: bold;
-  font-family: "Ubuntu", sans-serif;
+  padding: 0.6rem 0;
+  transition: color 0.2s ease;
 }
 
-/* Responsive behavior */
+.dropdown-link:hover,
+.dropdown-link.active {
+  color: var(--color-green);
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: var(--color-border);
+  margin: 0.75rem 0;
+}
+
+.nav-dropdown .nav-icon-link {
+  font-size: 0.9rem;
+  padding: 0.4rem 0;
+  color: var(--color-text-sub);
+}
+
+/* ── Responsive ─────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .nav-links,
   .nav-icons {
@@ -107,16 +196,10 @@
   }
 
   .menu-button {
-    display: block;
-    position: absolute;
-    left: 1rem;
-  }
-
-  .nav-title {
-    margin: 0 auto;
-  }
-
-  .dropdown-menu.show {
     display: flex;
+  }
+
+  .navbar {
+    padding: 0 1.25rem;
   }
 }

@@ -1,75 +1,103 @@
-
-import React from 'react'; 
+import { useStaggerReveal } from '../hooks/useScrollReveal';
 import './CS.css';
 
+const PROJECTS = [
+  {
+    image: '/Images/Personal_website.png',
+    year: '2023–Present',
+    title: 'Personal Website',
+    description: 'Built this site from scratch using React and Vite, styled with custom CSS to showcase technical projects, writing, and art. Designed for performance with code splitting, lazy loading, and aggressive caching via Vercel.',
+    tags: ['React', 'Vite', 'CSS', 'Vercel'],
+    link: null,
+    imageLeft: true,
+  },
+  {
+    image: '/Images/stanfanator.png',
+    year: '2024',
+    title: 'Stanfanator',
+    description: 'Probability-based person-guessing game where users identify Stanford students from dynamically generated clues. React + Node.js frontend backed by a Python Flask API connected to a live database.',
+    tags: ['React', 'Node.js', 'Python', 'Flask'],
+    link: null,
+    imageLeft: false,
+  },
+];
+
+const SKILLS = [
+  {
+    category: 'Frontend',
+    items: ['React', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3'],
+  },
+  {
+    category: 'Backend',
+    items: ['Java', 'C#', 'Python', 'Flask', 'SQL', 'PostgreSQL'],
+  },
+  {
+    category: 'Data / AI',
+    items: ['PyTorch', 'NumPy', 'Scikit-learn', 'Pandas'],
+  },
+  {
+    category: 'Tooling',
+    items: ['Git', 'GitHub Actions', 'Docker', 'Azure', 'Linux', 'Selenium'],
+  },
+];
+
 export default function CS() {
+  const projectsRef = useStaggerReveal();
+  const skillsRef = useStaggerReveal();
+
   return (
-    <div className="cs-container">
-      <h1 className="cs-title">Expertise</h1>
-      <div className="expertise-section">
-        <div className="expertise-card">
-          <h2 className="expertise-header">
-            Full<span className="dash-wiggle">-</span>Stack Web Development
-          </h2>
-          <p>
-            I have built a diverse array of web applications from scratch using modern technologies such as React and SpringBoot.
-            I have a strong proficiency in the SDLC process as well as frontend and backend development.
-          </p>
-          <div className="tech-stack">
-            <span>React</span><span>TypeScript</span><span>JavaScript</span>
-            <span>HTML5</span><span>CSS3</span><span>Java</span>
-            <span>C#</span><span>SQL</span><span>PostgreSQL</span>
-          </div>
-        </div>
-
-        <div className="expertise-card">
-          <h2 className="expertise-header">
-             Automation <span className="ampersand" id="amp-left">&</span> Scripting
-          </h2>
-          <p>
-            I have experience automating system workflows and repetitive tasks using open-source scripting solutions.
-            My work has saved significant manual hours and strengthened my ability to identify process bottlenecks and streamline backend operations.
-          </p>
-          <div className="tech-stack">
-            <span>Git</span><span>GitHub Actions</span><span>Docker</span>
-            <span>Azure</span><span>Linux</span><span>Windows</span>
-            <span>Selenium</span>
-          </div>
-        </div>
-
-        <div className="expertise-card">
-          <h2 className="expertise-header">
-             Data Science <span className="ampersand" id="amp-right">&</span> Research
-          </h2>
-          <p>
-            Through coursework and lab research, I’ve applied machine learning, data visualization, and statistical techniques to real-world problems.
-            I’m comfortable working with structured data and conducting technical investigations to inform design and system improvements.
-          </p>
-          <div className="tech-stack">
-            <span>Python</span><span>Pytorch</span><span>NumPy</span><span>Sci-kit</span>
-          </div>
-        </div>
-      </div>
-
-      <div className="projects-header">
+    <div className="cs-page">
+      {/* Header */}
+      <header className="cs-header section">
+        <p className="cs-label">Engineering</p>
         <h1 className="cs-title">Personal Projects</h1>
-      </div>
-      <div className="projects-section">
-        <div className="project-card">
-          <img src="/Images/Personal_website.png" alt="Sentra Project" className="project-image" />
-          <h2>Personal Website</h2>
-          <p>
-            This personal website was built using React.js and styled with custom CSS to showcase my technical projects, background, and design abilities. It demonstrates front-end development skills including responsive layout design, component structuring, and dynamic asset integration.
-          </p>
+        <p className="cs-subtitle">Selected work in web, systems, and research.</p>
+      </header>
+
+      {/* Projects */}
+      <section className="cs-projects section" ref={projectsRef}>
+        {PROJECTS.map((p, i) => (
+          <div key={i} className={`cs-project${p.imageLeft ? '' : ' cs-project--reverse'}`}>
+            <div className="cs-project__image-wrap reveal-clip">
+              <img
+                src={p.image}
+                alt={p.title}
+                loading="lazy"
+                className="cs-project__image"
+              />
+            </div>
+            <div className="cs-project__info">
+              <p className="cs-project__year reveal">{p.year}</p>
+              <h2 className="cs-project__title reveal" style={{ transitionDelay: '0.08s' }}>{p.title}</h2>
+              <p className="cs-project__desc reveal" style={{ transitionDelay: '0.16s' }}>{p.description}</p>
+              <div className="cs-project__tags reveal" style={{ transitionDelay: '0.24s' }}>
+                {p.tags.map(tag => <span key={tag} className="cs-tag">{tag}</span>)}
+              </div>
+              {p.link && (
+                <a href={p.link} target="_blank" rel="noopener noreferrer" className="cs-link reveal" style={{ transitionDelay: '0.32s' }}>
+                  View project
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
+      </section>
+
+      {/* Skills */}
+      <section className="cs-skills" ref={skillsRef}>
+        <div className="cs-skills__inner section">
+          {SKILLS.map((col, i) => (
+            <div key={i} className="cs-skills__col reveal" style={{ transitionDelay: `${i * 0.08}s` }}>
+              <p className="cs-skills__category">{col.category}</p>
+              <ul className="cs-skills__list">
+                {col.items.map(item => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-        <div className="project-card">
-          <img src="/Images/stanfanator.png" alt="Stanfanator Game" className="project-image" />
-          <h2>Stanfanator</h2>
-          <p>
-            Developed a probability-based person-guessing game using React and Node.js for the frontend and Python Flask for the backend, where users identify Stanford students based on clues dynamically generated from a database.
-          </p>
-        </div>
-      </div>
+      </section>
     </div>
   );
 }

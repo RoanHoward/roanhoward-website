@@ -1,56 +1,105 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import './SidebarNav.css';
 
-function SidebarNav() {
-  const [menuOpen, setMenuOpen] = useState(false);
+const NAV_LINKS = [
+  { to: '/cs',      label: 'CS' },
+  { to: '/film',    label: 'Film' },
+  { to: '/art',     label: 'Art' },
+  { to: '/travel',  label: 'Travel' },
+  { to: '/tlingit', label: 'Tlingit' },
+];
 
-  const toggleMenu = () => {
-    setMenuOpen(prev => !prev);
+const ICON_LINKS = [
+  { href: '/Images/Resume.pdf',                               label: 'Resume',  download: true  },
+  { href: 'http://www.linkedin.com/in/roan-howard-b7647a28b', label: 'LinkedIn',external: true  },
+  { href: 'https://github.com/roanhoward',                    label: 'GitHub',  external: true  },
+  { href: 'mailto:roanahoward@gmail.com',                     label: 'Email'                    },
+];
+
+function MagneticLink({ href, label, download, external, onClick }) {
+  const ref = useRef(null);
+
+  const handleMouseMove = (e) => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dx = (e.clientX - cx) * 0.35;
+    const dy = (e.clientY - cy) * 0.35;
+    el.style.transform = `translate(${dx}px, ${dy}px)`;
   };
 
+  const handleMouseLeave = () => {
+    if (ref.current) ref.current.style.transform = 'translate(0, 0)';
+  };
+
+  const sharedProps = {
+    ref,
+    className: 'nav-icon-link',
+    onMouseMove: handleMouseMove,
+    onMouseLeave: handleMouseLeave,
+    onClick,
+  };
+
+  if (download)  return <a {...sharedProps} href={href} download>{label}</a>;
+  if (external)  return <a {...sharedProps} href={href} target="_blank" rel="noopener noreferrer">{label}</a>;
+  return <a {...sharedProps} href={href}>{label}</a>;
+}
+
+function SidebarNav() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const close = () => setMenuOpen(false);
+
   return (
-    <nav className="navbar">
-      {/* Hamburger button for mobile */}
-      <button className="menu-button" onClick={toggleMenu}>
-        ☰
+    <nav className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}>
+      <button
+        className={`menu-button${menuOpen ? ' menu-button--open' : ''}`}
+        onClick={() => setMenuOpen(p => !p)}
+        aria-label="Toggle menu"
+      >
+        <span />
+        <span />
+        <span />
       </button>
 
-      {/* Left-side links */}
       <div className="nav-links">
-        <NavLink to="/cs">CS</NavLink>
-        <NavLink to="/film">Film</NavLink>
-        <NavLink to="/art">Art</NavLink>
+        {NAV_LINKS.map(({ to, label }) => (
+          <NavLink
+            key={to}
+            to={to}
+            className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
+          >
+            {label}
+          </NavLink>
+        ))}
       </div>
 
-      {/* Center title */}
-      <NavLink to="/" className="nav-title">ROAN HOWARD</NavLink>
+      <NavLink to="/" className="nav-brand">ROAN HOWARD</NavLink>
 
-      {/* Right-side icons */}
       <div className="nav-icons">
-        <a href="/Images/Resume.pdf" download className="nav-icon">
-          <img src="/Images/resume_icon.png" alt="Download Resume" />
-        </a>
-        <a href="http://www.linkedin.com/in/roan-howard-b7647a28b" target="_blank" rel="noopener noreferrer" className="nav-icon">
-          <img src="/Images/linkedin.jpg" alt="LinkedIn" />
-        </a>
-        <a href="https://github.com/roanhoward" target="_blank" rel="noopener noreferrer" className="nav-icon">
-          <img src="/Images/github1.png" alt="GitHub" />
-        </a>
-        <a href="mailto:roanahoward@gmail.com" className="nav-icon">
-          <img src="/Images/email1.jpg" alt="Email" />
-        </a>
+        {ICON_LINKS.map(({ href, label, download, external }) => (
+          <MagneticLink key={label} href={href} label={label} download={download} external={external} />
+        ))}
       </div>
 
-      {/* Dropdown menu for small screens */}
-      <div className={`dropdown-menu ${menuOpen ? 'show' : ''}`}>
-        <NavLink to="/cs" onClick={toggleMenu}>CS</NavLink>
-        <NavLink to="/film" onClick={toggleMenu}>Film</NavLink>
-        <NavLink to="/art" onClick={toggleMenu}>Art</NavLink>
-        <a href="/Images/Resume.pdf" download>Resume</a>
-        <a href="http://www.linkedin.com/in/roan-howard-b7647a28b" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://github.com/roanhoward" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="mailto:roanahoward@gmail.com">Email</a>
+      <div className={`nav-dropdown${menuOpen ? ' nav-dropdown--open' : ''}`}>
+        {NAV_LINKS.map(({ to, label }) => (
+          <NavLink key={to} to={to} className="dropdown-link" onClick={close}>{label}</NavLink>
+        ))}
+        <div className="dropdown-divider" />
+        {ICON_LINKS.map(({ href, label, download, external }) => (
+          <MagneticLink key={label} href={href} label={label} download={download} external={external} onClick={close} />
+        ))}
       </div>
     </nav>
   );

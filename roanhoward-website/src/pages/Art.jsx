@@ -1,140 +1,132 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useStaggerReveal } from '../hooks/useScrollReveal';
 import './Art.css';
 
-const Art = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
+const ARTWORKS = [
+  {
+    file: 'Charcoal.jpeg',
+    alt: 'Control',
+    title: 'Control',
+    medium: 'Frottage / Charcoal',
+    year: '2025',
+    statement: 'Control is a frottage piece and my first-ever art project. I completed this 6-foot-long self-portrait in my first art class at Stanford during the Winter 2025 quarter.',
+  },
+  {
+    file: 'Head Rest 6 copy.jpg',
+    alt: 'Head Rest',
+    title: 'Head Rest',
+    medium: 'Soft Sculpture / Speaker',
+    year: '2025',
+    statement: 'Head Rest is a 7.5× enlarged, stuffed car headrest. The soft sculpture contains a speaker that plays car sounds, inviting the audience into the drifting, half-asleep state of falling asleep in the back seat.',
+  },
+  {
+    file: 'Raven1.jpeg',
+    alt: 'Raven I',
+    title: 'Raven I',
+    medium: 'Print',
+    year: '2025',
+    statement: 'This first print of a triptych is an homage to the Tlingit story Raven Steals the Sun.',
+  },
+  {
+    file: 'TrueNature.jpg',
+    alt: 'True Nature',
+    title: 'True Nature',
+    medium: 'Soft Sculpture',
+    year: '2025',
+    statement: 'A hand-sewn, stuffed log.',
+  },
+  {
+    file: 'Raven2.jpeg',
+    alt: 'Raven II',
+    title: 'Raven II',
+    medium: 'Print',
+    year: '2025',
+    statement: 'Raven II is the second print of the triptych.',
+  },
+  {
+    file: 'Howard_InstallationView.jpeg',
+    alt: 'Traffic Light',
+    title: 'Traffic Light',
+    medium: 'Wood Sculpture',
+    year: '2025',
+    statement: 'My first wood sculpture, learning the basics and tools of the wood shop.',
+  },
+  {
+    file: 'Raven3.jpeg',
+    alt: 'Raven III',
+    title: 'Raven III',
+    medium: 'Print',
+    year: '2025',
+    statement: 'Raven III is the third and final print of the triptych.',
+  },
+];
 
-  const artworkData = {
-    'Charcoal.jpeg': {
-      title: 'Control',
-      statement: 'Control is a frottage piece and my first-ever art project. I completed this 6-foot-long self-portrait in my first art class at Stanford during the Winter 2025 quarter.'
-    },
-    'Raven1.jpeg': {
-      title: 'Raven I',
-      statement: 'This first print of a triptych is an homage to the Tlingit story Raven Steals the Sun.'
-    },
-    'Raven2.jpeg': {
-      title: 'Raven II',
-      statement: 'Raven II is the second print of the triptych.'
-    },
-    'Raven3.jpeg': {
-      title: 'Raven III',
-      statement: 'Raven III is the third print of the triptych.'
-    },
-    'Head Rest 6 copy.jpg': {
-      title: 'Head Rest',
-      statement: 'Head Rest is a 7.5× enlarged, stuffed car headrest. The soft sculpture contains a speaker that plays car sounds, inviting the audience into the drifting, half-asleep state of falling asleep in the back seat.'
-    },
-    'TrueNature.jpg': {
-      title: 'True Nature',
-      statement: 'A hand-sewn, stuffed log.'
-    },
-    'statment.png': {
-      title: '',
-      statement: ''
-    },
-    'Howard_InstallationView.jpeg': {
-      title: 'Traffic Light',
-      statement: 'My first Wood Sculpture, just learning the basics and tools of the wood shop.'
-    }
-  };
+function CloseIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+      <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  );
+}
 
-  const handleImageClick = (imageSrc, imageAlt) => {
-    const imageName = imageSrc.split('/').pop();
-    setSelectedImage({
-      src: imageSrc,
-      alt: imageAlt,
-      ...artworkData[imageName]
-    });
-  };
+export default function Art() {
+  const [selected, setSelected] = useState(null);
+  const galleryRef = useStaggerReveal();
 
-  const closeModal = () => {
-    setSelectedImage(null);
-  };
+  const open = (artwork) => setSelected(artwork);
+  const close = () => setSelected(null);
 
   return (
-    <>
-      <div className="art-container" style={{ position: 'relative', width: '100%', height: '1200px' }}>
-        <div className="image-tile" style={{ width: '300px', position: 'absolute', top: '500px', left: '40px' }}>
-          <img 
-            src="/Images/Charcoal.jpeg" 
-            alt="Control" 
-            loading="lazy"
-            onClick={() => handleImageClick('/Images/Charcoal.jpeg', 'Control')}
-          />
-        </div>
-        <div className="image-tile" style={{ width: '250px', position: 'absolute', top: '15px', left: '400px' }}>
-          <img 
-            src="/Images/Raven1.jpeg" 
-            alt="Raven I" 
-            loading="lazy"
-            onClick={() => handleImageClick('/Images/Raven1.jpeg', 'Raven I')}
-          />
-        </div>
-        <div className="image-tile" style={{ width: '260px', position: 'absolute', top: '15px', left: '680px' }}>
-          <img 
-            src="/Images/Raven2.jpeg" 
-            alt="Raven II" 
-            loading="lazy"
-            onClick={() => handleImageClick('/Images/Raven2.jpeg', 'Raven II')}
-          />
-        </div>
-        <div className="image-tile" style={{ width: '270px', position: 'absolute', top: '15px', left: '980px' }}>
-          <img 
-            src="/Images/Raven3.jpeg" 
-            alt="Raven III" 
-            loading="lazy"
-            onClick={() => handleImageClick('/Images/Raven3.jpeg', 'Raven III')}
-          />
-        </div>
-        <div className="image-tile" style={{ width: '300px', position: 'absolute', top: '15px', left: '40px' }}>
-          <img 
-            src="/Images/Head Rest 6 copy.jpg" 
-            alt="Head Rest" 
-            loading="lazy"
-            onClick={() => handleImageClick('/Images/Head Rest 6 copy.jpg', 'Head Rest')}
-          />
-        </div>
-        <div className="image-tile" style={{ width: '320px', position: 'absolute', top: '265px', left: '1000px' }}>
-          <img 
-            src="/Images/TrueNature.jpg" 
-            alt="True Nature" 
-            loading="lazy"
-            onClick={() => handleImageClick('/Images/TrueNature.jpg', 'True Nature')}
-          />
-        </div>
-        <div className="image-tile" style={{ width: '600px', position: 'absolute', top: '255px', left: '370px' }}>
-          <img 
-            src="/Images/statment.png" 
-            alt="New Artwork" 
-            loading="lazy"
-            style={{ cursor: 'default' }}
-          />
-        </div>
-        <div className="image-tile" style={{ width: '320px', position: 'absolute', top: '740px', left: '380px' }}>
-          <img 
-            src="/Images/Howard_InstallationView.jpeg" 
-            alt="Installation View" 
-            loading="lazy"
-            onClick={() => handleImageClick('/Images/Howard_InstallationView.jpeg', 'Installation View')}
-          />
-        </div>
-      </div>
+    <div className="art-page">
+      {/* Header */}
+      <header className="art-header section">
+        <p className="art-label">Visual Art</p>
+        <h1 className="art-title">Selected Works</h1>
+        <p className="art-subtitle">Stanford Art Practice, 2025.</p>
+      </header>
 
-      {selectedImage && (
-        <div className="modal-overlay" onClick={closeModal}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={closeModal}>×</button>
-            <img src={selectedImage.src} alt={selectedImage.alt} className="modal-image" />
-            <div className="modal-info">
-              <h2 className="modal-title">{selectedImage.title}</h2>
-              <p className="modal-statement">{selectedImage.statement}</p>
+      {/* Masonry gallery */}
+      <section className="art-gallery section" ref={galleryRef}>
+        {ARTWORKS.map((aw, i) => (
+          <button
+            key={i}
+            className="art-tile reveal"
+            style={{ transitionDelay: `${i * 0.06}s` }}
+            onClick={() => open(aw)}
+            aria-label={`View ${aw.title}`}
+          >
+            <img
+              src={`/Images/${aw.file}`}
+              alt={aw.alt}
+              loading="lazy"
+              className="art-tile__img"
+            />
+            <div className="art-tile__overlay">
+              <p className="art-tile__name">{aw.title}</p>
+              <p className="art-tile__medium">{aw.medium}</p>
+            </div>
+          </button>
+        ))}
+      </section>
+
+      {/* Modal */}
+      {selected && (
+        <div className="art-modal-backdrop" onClick={close}>
+          <div className="art-modal" onClick={(e) => e.stopPropagation()}>
+            <button className="art-modal__close" onClick={close} aria-label="Close">
+              <CloseIcon />
+            </button>
+            <div className="art-modal__image-col">
+              <img src={`/Images/${selected.file}`} alt={selected.alt} className="art-modal__img" />
+            </div>
+            <div className="art-modal__info">
+              <p className="art-modal__meta">{selected.medium} · {selected.year}</p>
+              <h2 className="art-modal__title">{selected.title}</h2>
+              <p className="art-modal__statement">{selected.statement}</p>
             </div>
           </div>
         </div>
       )}
-    </>
+    </div>
   );
-};
-
-export default Art;
+}

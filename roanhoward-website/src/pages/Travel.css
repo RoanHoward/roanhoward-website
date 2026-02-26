@@ -1,0 +1,110 @@
+/* ── Header ──────────────────────────────────────────────────────── */
+.travel-header {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.travel-label {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-green-mid);
+  margin-bottom: 0.75rem;
+}
+
+.travel-title {
+  font-family: var(--font-sans);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.travel-count {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--color-text-sub);
+}
+
+/* ── Filters ─────────────────────────────────────────────────────── */
+.travel-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.travel-filter {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.9rem;
+  border: 1.5px solid var(--color-border);
+  color: var(--color-text-sub);
+  background: transparent;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  border-radius: 2px;
+}
+
+.travel-filter:hover {
+  border-color: var(--region-color, var(--color-green));
+  color: var(--region-color, var(--color-green));
+}
+
+.travel-filter--active {
+  background: var(--region-color, var(--color-green));
+  border-color: var(--region-color, var(--color-green));
+  color: #fff;
+}
+
+/* ── Map ─────────────────────────────────────────────────────────── */
+.travel-map-wrap {
+  width: 100%;
+  height: 60vh;
+}
+
+.travel-map {
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Location list ───────────────────────────────────────────────── */
+.travel-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+
+.travel-location {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.travel-location__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.travel-location__name {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--color-text-sub);
+}
+
+/* ── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .travel-map-wrap {
+    height: 50vw;
+    min-height: 280px;
+  }
+}

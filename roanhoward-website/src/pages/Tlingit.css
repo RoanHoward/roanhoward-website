@@ -1,0 +1,207 @@
+/* ── Hero ────────────────────────────────────────────────────────── */
+.tlingit-hero {
+  position: relative;
+  background: var(--color-green);
+  padding: 7rem 4rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tlingit-hero__texture {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255,255,255,0.025) 2px,
+    rgba(255,255,255,0.025) 4px
+  );
+  pointer-events: none;
+}
+
+.tlingit-hero__content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 800px;
+}
+
+.tlingit-hero__greeting {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.75rem, 5vw, 3.5rem);
+  color: #fff;
+  line-height: 1.25;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.tlingit-hero__translation {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 0.5rem;
+}
+
+.tlingit-hero__clan {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+
+/* ── Divider ─────────────────────────────────────────────────────── */
+.tlingit-divider {
+  width: 3rem;
+  height: 3px;
+  background: var(--color-green);
+  margin-bottom: 2rem;
+}
+
+/* ── Intro ───────────────────────────────────────────────────────── */
+.tlingit-intro__text {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  color: var(--color-text-sub);
+  line-height: 1.9;
+  max-width: 640px;
+}
+
+/* ── Section label + title ───────────────────────────────────────── */
+.tlingit-label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-green-mid);
+  margin-bottom: 0.5rem;
+}
+
+.tlingit-section__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--color-green-light);
+}
+
+/* ── Empty state ─────────────────────────────────────────────────── */
+.tlingit-empty {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  padding: 2rem 0;
+}
+
+/* ── Papers ──────────────────────────────────────────────────────── */
+.tlingit-papers {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.tlingit-paper-row {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr auto;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tlingit-paper-row:first-child {
+  border-top: 1px solid var(--color-border);
+}
+
+.tlingit-paper__index {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+.tlingit-paper__title {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: var(--color-text);
+  margin-bottom: 0.25rem;
+}
+
+.tlingit-paper__year {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.tlingit-paper__dl {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  padding: 0.4rem 0.8rem;
+  border: 1.5px solid var(--color-green);
+  color: var(--color-green);
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.tlingit-paper__dl:hover {
+  background: var(--color-green);
+  color: #fff;
+}
+
+/* ── Events ──────────────────────────────────────────────────────── */
+.tlingit-events {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.tlingit-event-card {
+  border: 1.5px solid var(--color-border);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.tlingit-event__date {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--color-green-mid);
+  letter-spacing: 0.08em;
+}
+
+.tlingit-event__name {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.tlingit-event__location {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+}
+
+/* ── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .tlingit-hero {
+    padding: 5rem 1.5rem;
+  }
+
+  .tlingit-paper-row {
+    grid-template-columns: 2rem 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .tlingit-paper__dl {
+    grid-column: 1 / -1;
+  }
+}

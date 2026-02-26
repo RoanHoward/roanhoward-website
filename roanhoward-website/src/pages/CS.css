@@ -1,157 +1,201 @@
-.cs-container {
-  padding: 2rem;
-  background-color: #ffffff;
-  color: white;
+/* ── Header ──────────────────────────────────────────────────────── */
+.cs-header {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cs-label {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-green-mid);
+  margin-bottom: 0.75rem;
 }
 
 .cs-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 2rem;
-  text-align: left;
-  color: #1a1c23;
-  font-family: "Ubuntu", sans-serif;
+  font-family: var(--font-sans);
+  font-size: clamp(2.5rem, 6vw, 5rem);
   font-weight: 700;
-  font-style: normal;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-bottom: 0.75rem;
 }
 
-.expertise-section {
+.cs-subtitle {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--color-text-sub);
+}
+
+/* ── Projects ────────────────────────────────────────────────────── */
+.cs-projects {
   display: flex;
-  font-family: 'Share Tech Mono', monospace;
-  justify-content: space-between;
-  gap: 2rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 6rem;
 }
 
-.expertise-card {
-  background-color: #56815e;
-  padding: 1.5rem;
-  border-radius: 12px;
-  flex: 1 1 30%;
-  min-width: 280px;
+.cs-project {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
 }
 
-.expertise-header {
-  font-family: "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-  font-weight: 600;
-  letter-spacing: 1px;
+.cs-project--reverse {
+  direction: rtl;
+}
+
+.cs-project--reverse > * {
+  direction: ltr;
+}
+
+.cs-project__image-wrap {
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.cs-project__image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-out-expo);
+}
+
+.cs-project__image-wrap:hover .cs-project__image {
+  transform: scale(1.04);
+}
+
+.cs-project__year {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.cs-project__title {
+  font-family: var(--font-sans);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
+  color: var(--color-text);
   margin-bottom: 1rem;
+  line-height: 1.15;
 }
 
-.tech-stack {
-  margin-top: 1rem;
+.cs-project__desc {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--color-text-sub);
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+
+.cs-project__tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-}
-
-.tech-stack span {
-  background-color: white;
-  color: black;
-  border-radius: 999px;
-  padding: 0.3rem 0.75rem;
-  font-size: 0.8rem;
-  font-weight: 500;
-  display: inline-block;
-  transition: transform 0.2s ease-in-out;
-  cursor: default;
-}
-
-/* Tilt effect */
-.tech-stack span:hover {
-  transform: rotateZ(calc(-15deg + 5deg * var(--rand)));
-}
-
-/* Add randomness using nth-child for variety */
-.tech-stack span:nth-child(4n) { --rand: 0.25; }
-.tech-stack span:nth-child(4n+1) { --rand: 0.75; }
-.tech-stack span:nth-child(4n+2) { --rand: 0.5; }
-.tech-stack span:nth-child(4n+3) { --rand: 1; }
-
-.tech-stack span {
-  /* ...your existing styles... */
-  --rand: 0.5; /* default value so no span is missed */
-}
-
-/* Projects section */
-.projects-header {
-  margin-top: 3rem;
-}
-
-.projects-section {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  margin-top: 1rem;
-}
-
-.project-card {
-  background-color: #e8e8e8;
-  color: black;
-  padding: 1rem;
-  border-radius: 8px;
-  flex: 1 1 45%;
-  min-width: 280px;
-}
-
-.project-image {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
   margin-bottom: 1rem;
 }
 
-.ampersand {
+.cs-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--color-green-mid);
+  background: var(--color-green-light);
+  padding: 0.25rem 0.6rem;
+  border-radius: 2px;
+}
+
+.cs-link {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-green);
+  text-decoration: none;
+  position: relative;
   display: inline-block;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-  font-weight: bold;
+  padding-bottom: 2px;
+}
+
+.cs-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: var(--color-green);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s var(--ease-out-expo);
+}
+
+.cs-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* ── Skills ──────────────────────────────────────────────────────── */
+.cs-skills {
+  background: var(--color-text);
   color: #fff;
 }
 
-/* Left ampersand animation (tilt and jump) */
-#amp-left {
-  animation: amp-wave-left 5s ease-in-out infinite;
-  animation-delay: 0s;
-  animation-fill-mode: both;
-  animation-play-state: running;
+.cs-skills__inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
 }
 
-/* Right ampersand animation (tilt and shake) */
-#amp-right {
-  animation: amp-wave-right 5s ease-in-out infinite;
-  animation-delay: 2s;
-  animation-fill-mode: both;
-  animation-play-state: running;
+.cs-skills__category {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 1rem;
 }
 
-@keyframes amp-wave-left {
-  0% { transform: rotate(0deg) translateY(0); }
-  20% { transform: rotate(-30deg) translateY(-2px); }
-  40% { transform: rotate(5deg) translateY(0); }
-  60% { transform: rotate(-5deg) translateY(2px); }
-  100% { transform: rotate(0deg) translateY(0); }
+.cs-skills__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-@keyframes amp-wave-right {
-  0% { transform: rotate(0deg) translateX(0); }
-  20% { transform: rotate(20deg) translateX(2px); }
-  40% { transform: rotate(-5deg) translateX(-2px); }
-  60% { transform: rotate(15deg) translateX(2px); }
-  100% { transform: rotate(0deg) translateX(0); }
+.cs-skills__list li {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.85);
+  padding-left: 1em;
+  position: relative;
 }
 
-.dash-wiggle {
-  display: inline-block;
-  animation: dash-wiggle 3s ease-in-out infinite;
+.cs-skills__list li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--color-green-mid);
 }
 
-@keyframes dash-wiggle {
-  0% { transform: rotate(0deg); }
-  20% { transform: rotate(5deg); }
-  40% { transform: rotate(-10deg); }
-  60% { transform: rotate(6deg); }
-  80% { transform: rotate(-6deg); }
-  100% { transform: rotate(0deg); }
+/* ── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .cs-project,
+  .cs-project--reverse {
+    grid-template-columns: 1fr;
+    direction: ltr;
+    gap: 2rem;
+  }
+
+  .cs-skills__inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .cs-skills__inner {
+    grid-template-columns: 1fr;
+  }
 }

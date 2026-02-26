@@ -1,122 +1,206 @@
-.art-container {
+/* ── Header ──────────────────────────────────────────────────────── */
+.art-header {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.art-label {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-green-mid);
+  margin-bottom: 0.75rem;
+}
+
+.art-title {
+  font-family: var(--font-sans);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-bottom: 0.75rem;
+}
+
+.art-subtitle {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--color-text-sub);
+}
+
+/* ── Masonry gallery ─────────────────────────────────────────────── */
+.art-gallery {
+  columns: 3;
+  column-gap: 1.25rem;
+}
+
+.art-tile {
+  display: block;
   position: relative;
   width: 100%;
-  height: 1200px; /* Adjust based on your layout */
-  padding: 10px;
-  z-index: 1;
+  break-inside: avoid;
+  margin-bottom: 1.25rem;
+  overflow: hidden;
+  border-radius: 2px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
 }
 
-.image-tile {
-  position: absolute;
-  z-index: 1;
-}
-
-.image-tile img {
+.art-tile__img {
+  width: 100%;
+  height: auto;
   display: block;
+  filter: grayscale(0.12);
+  transition: transform 0.5s var(--ease-out-expo), filter 0.35s ease;
+}
+
+.art-tile:hover .art-tile__img {
+  transform: scale(1.04);
+  filter: grayscale(0);
+}
+
+.art-tile__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2.5rem 1rem 1rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 100%);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.3s var(--ease-out-expo);
+}
+
+.art-tile:hover .art-tile__overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.art-tile__name {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.2rem;
+}
+
+.art-tile__medium {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.7);
+}
+
+/* ── Modal ───────────────────────────────────────────────────────── */
+.art-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 20, 16, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.art-modal {
+  position: relative;
+  background: var(--color-surface);
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  animation: modalIn 0.35s var(--ease-out-expo) both;
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+}
+
+.art-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  color: var(--color-text-sub);
+  padding: 0.25rem;
+  transition: color 0.2s ease;
+}
+
+.art-modal__close:hover {
+  color: var(--color-text);
+}
+
+.art-modal__image-col {
+  overflow: hidden;
+  max-height: 80vh;
+}
+
+.art-modal__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  cursor: pointer;
-  transition: transform 0.3s ease;
 }
 
-.image-tile img:hover {
-  transform: scale(1.05);
-}
-
-/* Modal Styles */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.9);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  padding: 20px;
-  overflow-y: auto;
-}
-
-.modal-content {
-  position: relative;
-  max-width: 90%;
-  max-height: 90vh;
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 20px;
+.art-modal__info {
+  padding: 2.5rem 2rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
-
-.modal-close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  background: none;
-  border: none;
-  font-size: 40px;
-  color: #333;
-  cursor: pointer;
-  line-height: 1;
-  padding: 0;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  transition: color 0.2s ease;
-  z-index: 1001;
+  gap: 0.75rem;
 }
 
-.modal-close:hover {
-  color: #000;
+.art-modal__meta {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-green-mid);
 }
 
-.modal-image {
-  max-width: 100%;
-  max-height: 70vh;
-  object-fit: contain;
-  margin-bottom: 20px;
-  border-radius: 4px;
-}
-
-.modal-info {
-  text-align: center;
-  max-width: 800px;
-}
-
-.modal-title {
-  font-family: "Ubuntu", sans-serif;
-  font-size: 2rem;
+.art-modal__title {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
   font-weight: 700;
-  margin-bottom: 15px;
-  color: #111;
+  color: var(--color-text);
+  line-height: 1.2;
 }
 
-.modal-statement {
-  font-family: "Ubuntu", sans-serif;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #333;
-  margin: 0;
+.art-modal__statement {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--color-text-sub);
+  line-height: 1.8;
 }
 
-@media (max-width: 768px) {
-  .modal-content {
-    max-width: 95%;
-    padding: 15px;
+/* ── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .art-gallery {
+    columns: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .art-gallery {
+    columns: 1;
   }
 
-  .modal-title {
-    font-size: 1.5rem;
+  .art-modal {
+    grid-template-columns: 1fr;
+    max-width: 95vw;
   }
 
-  .modal-statement {
-    font-size: 1rem;
+  .art-modal__image-col {
+    max-height: 50vw;
   }
 }
