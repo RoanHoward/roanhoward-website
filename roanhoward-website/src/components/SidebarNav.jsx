@@ -11,7 +11,7 @@ const NAV_LINKS = [
 ];
 
 const ICON_LINKS = [
-  { href: '/Images/Resume.pdf',                               label: 'Resume',  download: true  },
+  { href: '/Images/RESUME.pdf',                               label: 'Resume',  download: true  },
   { href: 'http://www.linkedin.com/in/roan-howard-b7647a28b', label: 'LinkedIn',external: true  },
   { href: 'https://github.com/roanhoward',                    label: 'GitHub',  external: true  },
   { href: 'mailto:roanahoward@gmail.com',                     label: 'Email'                    },
