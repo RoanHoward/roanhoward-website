@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import './SidebarNav.css';
-
 const NAV_LINKS = [
   { to: '/cs',      label: 'CS' },
   { to: '/film',    label: 'Film' },
@@ -11,7 +10,7 @@ const NAV_LINKS = [
 ];
 
 const ICON_LINKS = [
-  { href: '/Images/RESUME.pdf',                               label: 'Resume',  download: true  },
+  { href: '/Images/Resume.pdf',                               label: 'Resume',  download: 'RoanHoward_Resume.pdf' },
   { href: 'http://www.linkedin.com/in/roan-howard-b7647a28b', label: 'LinkedIn',external: true  },
   { href: 'https://github.com/roanhoward',                    label: 'GitHub',  external: true  },
   { href: 'mailto:roanahoward@gmail.com',                     label: 'Email'                    },
@@ -43,7 +42,7 @@ function MagneticLink({ href, label, download, external, onClick }) {
     onClick,
   };
 
-  if (download)  return <a {...sharedProps} href={href} download>{label}</a>;
+  if (download)  return <a {...sharedProps} href={href} download={download}>{label}</a>;
   if (external)  return <a {...sharedProps} href={href} target="_blank" rel="noopener noreferrer">{label}</a>;
   return <a {...sharedProps} href={href}>{label}</a>;
 }
