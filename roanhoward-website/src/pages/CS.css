@@ -1,146 +1,262 @@
+/* ── Color system ─────────────────────────────────────────────────
+   #F6F4EF  = page bg (matches site global)
+   #FFFFFF  = table / card bg
+   #DEDAD4  = borders, dividers
+   #141410  = text primary
+   #5C5952  = text secondary
+   #9A9690  = text muted
+   #243D28  = accent forest green
+   #EBF0EB  = accent green light bg / hover
+   ────────────────────────────────────────────────────────────────── */
+
 /* ── Header ──────────────────────────────────────────────────────── */
 .cs-header {
-  border-bottom: 1px solid var(--color-border);
+  background: #F6F4EF;
 }
 
 .cs-label {
   font-family: var(--font-mono);
-  font-size: 0.82rem;
-  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--color-green-mid);
+  color: #243D28;
   margin-bottom: 0.75rem;
 }
 
 .cs-title {
   font-family: var(--font-sans);
-  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.02em;
-  color: var(--color-text);
+  color: #141410;
   margin-bottom: 0.75rem;
 }
 
 .cs-subtitle {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 1.15rem;
-  color: var(--color-text-sub);
+  font-size: 1.1rem;
+  color: #5C5952;
 }
 
-/* ── Projects ────────────────────────────────────────────────────── */
+/* ── Projects section ─────────────────────────────────────────────── */
 .cs-projects {
-  display: flex;
-  flex-direction: column;
-  gap: 6rem;
+  background: #F6F4EF;
 }
 
-.cs-project {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+/* ── Filter bar ───────────────────────────────────────────────────── */
+.cs-filter-bar {
+  display: flex;
+  gap: 1rem;
   align-items: center;
+  margin-bottom: 2rem;
 }
 
-.cs-project--reverse {
-  direction: rtl;
-}
-
-.cs-project--reverse > * {
-  direction: ltr;
-}
-
-.cs-project__image-wrap {
-  overflow: hidden;
-  border-radius: 2px;
-}
-
-.cs-project__image {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  transition: transform 0.6s var(--ease-out-expo);
-}
-
-.cs-project__image-wrap:hover .cs-project__image {
-  transform: scale(1.04);
-}
-
-.cs-project__year {
+.cs-filter-bar__sort {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   letter-spacing: 0.1em;
-  color: var(--color-text-muted);
-  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  color: #5C5952;
+  background: transparent;
+  border: 1px solid #DEDAD4;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
 }
 
-.cs-project__title {
-  font-family: var(--font-sans);
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
-  font-weight: 700;
-  color: var(--color-text);
-  margin-bottom: 1rem;
-  line-height: 1.15;
+.cs-filter-bar__sort:hover {
+  border-color: #243D28;
+  color: #243D28;
 }
 
-.cs-project__desc {
-  font-family: var(--font-sans);
-  font-size: 0.95rem;
-  color: var(--color-text-sub);
-  line-height: 1.8;
-  margin-bottom: 1.25rem;
-}
-
-.cs-project__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.cs-tag {
+.cs-filter-bar__search {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.06em;
-  color: var(--color-green-mid);
-  background: var(--color-green-light);
-  padding: 0.25rem 0.6rem;
-  border-radius: 2px;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  color: #141410;
+  background: #FFFFFF;
+  border: 1px solid #DEDAD4;
+  padding: 0.4rem 1rem;
+  width: 220px;
+  outline: none;
+  caret-color: #243D28;
+  transition: border-color 0.2s ease;
 }
 
-.cs-link {
+.cs-filter-bar__search::placeholder {
+  color: #9A9690;
+}
+
+.cs-filter-bar__search:focus {
+  border-color: #243D28;
+}
+
+/* ── Table wrapper ────────────────────────────────────────────────── */
+.cs-projects__table {
+  background: #FFFFFF;
+  border: 1px solid #DEDAD4;
+}
+
+/* ── Column header ────────────────────────────────────────────────── */
+.cs-projects__header {
+  display: grid;
+  grid-template-columns: 3rem 1fr auto auto 144px;
+  gap: 2rem;
+  align-items: center;
+  padding: 0 1.5rem 0.75rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  border-bottom: 2px solid #141410;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #9A9690;
+}
+
+/* ── Project row ──────────────────────────────────────────────────── */
+.cs-project-row {
+  display: grid;
+  grid-template-columns: 3rem 1fr auto auto 144px;
+  gap: 2rem;
+  align-items: center;
+  padding: 1.75rem 1.5rem;
+  margin: 0;
+  border-bottom: 1px solid #DEDAD4;
+  border-left: 3px solid transparent;
+  cursor: default;
+  transition: background-color 0.2s ease, border-left-color 0.2s ease, padding-left 0.2s ease;
+}
+
+.cs-project-row:last-of-type {
+  border-bottom: none;
+}
+
+.cs-project-row--active {
+  background-color: #EBF0EB;
+  border-left-color: #243D28;
+  margin-left: -3px;
+  padding-left: calc(1.5rem + 3px);
+}
+
+/* Index */
+.cs-project-row__index {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #9A9690;
+  transition: color 0.2s ease;
+}
+
+.cs-project-row--active .cs-project-row__index {
+  color: #243D28;
+}
+
+/* Title + description */
+.cs-project-row__info {
+  min-width: 0;
+}
+
+.cs-project-row__title {
   font-family: var(--font-sans);
-  font-size: 0.85rem;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #141410;
+  margin: 0 0 0.35rem 0;
+  transition: color 0.2s ease;
+}
+
+.cs-project-row--active .cs-project-row__title {
+  color: #243D28;
+}
+
+.cs-project-row__desc {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: #5C5952;
+  line-height: 1.7;
+  margin: 0;
+  transition: color 0.2s ease;
+}
+
+.cs-project-row--active .cs-project-row__desc {
+  color: #141410;
+}
+
+/* Inline tech highlight */
+.tech-highlight {
+  background: #EBF0EB;
+  color: #243D28;
   font-weight: 600;
-  color: var(--color-green);
+  border-radius: 2px;
+  padding: 0.1rem 0.3rem;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+/* Year */
+.cs-project-row__year {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #9A9690;
+  white-space: nowrap;
+  text-align: right;
+  transition: color 0.2s ease;
+}
+
+.cs-project-row--active .cs-project-row__year {
+  color: #243D28;
+}
+
+/* Thumbnail */
+.cs-project-row__thumb {
+  width: 144px;
+  height: 96px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid #DEDAD4;
+  border-radius: 2px;
+  transition: border-color 0.2s ease;
+}
+
+
+/* GitHub link */
+.cs-project-row__gh {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #5C5952;
   text-decoration: none;
-  position: relative;
-  display: inline-block;
-  padding-bottom: 2px;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  text-align: center;
+  transition: color 0.2s ease;
 }
 
-.cs-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1.5px;
-  background: var(--color-green);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.25s var(--ease-out-expo);
+.cs-project-row--active .cs-project-row__gh {
+  color: #243D28;
 }
 
-.cs-link:hover::after {
-  transform: scaleX(1);
+/* Blinking cursor */
+.cs-cursor {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: #243D28;
+  padding: 0.75rem 1.5rem;
+  animation: cs-blink 1s step-end infinite;
+  user-select: none;
+}
+
+@keyframes cs-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
 }
 
 /* ── Skills ──────────────────────────────────────────────────────── */
 .cs-skills {
-  background: var(--color-text);
-  color: #fff;
+  background: #FFFFFF;
+  border-top: 1px solid #DEDAD4;
 }
 
 .cs-skills__inner {
@@ -151,10 +267,12 @@
 
 .cs-skills__category {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
+  color: #243D28;
+  border-bottom: 1px solid #DEDAD4;
+  padding-bottom: 0.6rem;
   margin-bottom: 1rem;
 }
 
@@ -167,8 +285,8 @@
 
 .cs-skills__list li {
   font-family: var(--font-sans);
-  font-size: 0.95rem;
-  color: rgba(255,255,255,0.85);
+  font-size: 0.9rem;
+  color: #5C5952;
   padding-left: 1em;
   position: relative;
 }
@@ -177,20 +295,42 @@
   content: '–';
   position: absolute;
   left: 0;
-  color: var(--color-green-mid);
+  color: #DEDAD4;
 }
 
 /* ── Responsive ─────────────────────────────────────────────────── */
 @media (max-width: 900px) {
-  .cs-project,
-  .cs-project--reverse {
-    grid-template-columns: 1fr;
-    direction: ltr;
-    gap: 2rem;
-  }
-
   .cs-skills__inner {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  /* Collapse to 3 columns: index | info | year */
+  .cs-projects__header,
+  .cs-project-row {
+    grid-template-columns: 2.5rem 1fr auto;
+    gap: 1.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Hide image and github on mobile */
+  .cs-projects__header-img,
+  .cs-projects__header-gh,
+  .cs-project-row__thumb--desktop,
+  .cs-project-row__gh--desktop {
+    display: none;
+  }
+
+  /* Year stays visible */
+  .cs-project-row__year--desktop {
+    display: block;
+  }
+
+  /* Filter bar search shrinks */
+  .cs-filter-bar__search {
+    width: 140px;
   }
 }
 

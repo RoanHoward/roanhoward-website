@@ -41,14 +41,11 @@ export default function Home() {
               My name is Roan Howard, and my Tlingit name is Aaskuwut eesh. I am Alaskan Native, Raven moiety, of the People of the Copper River Clan from the Owl House. I spent my childhood in a tree-lined suburb of Kirkland, Washington, and now reside in California, where I study and create.
             </p>
             <p className="bio__body reveal" style={{ '--delay': '0.36s' }}>
-              I&apos;m a 21-year-old junior at Stanford University, majoring in Computer Science with a concentration in Artificial Intelligence and minoring in Art Practice. I thrive in the spaces where culture and technology intersect.
+              I&apos;I am a junior at Stanford University majoring in Computer Science with a focus in Artificial Intelligence and a minor in Art Practice. I am interested in AI and am actively pushing deeper into areas such as algorithm design, linear algebra, language models, and agentic infrastructure. I feel like I have only scratched the surface of my feild and I am in a rush to learn more. 
             </p>
             <p className="bio__body reveal" style={{ '--delay': '0.44s' }}>
               This site is where I share both my work and my story. There&apos;s more than I can write here feel free to reach out.
             </p>
-            <div className="bio__cta reveal" style={{ '--delay': '0.52s' }}>
-              <a href="mailto:roanahoward@gmail.com" className="btn-primary">Get in touch</a>
-            </div>
           </div>
         </div>
       </section>
