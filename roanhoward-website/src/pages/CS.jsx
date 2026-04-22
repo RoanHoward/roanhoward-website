@@ -58,7 +58,16 @@ const PROJECTS = [
     createdIndex: '06',
   },
   {
-    title: 'Enterprise Support Agent,',
+    title: 'Hubbard Brook Agent',
+    year: 'April 2026',
+    description: 'Built and deployed a full-stack AI agent, submitted to the 2026 Hubbard Brook Data Jam. Engineered a multi-tool Claude Sonnet backend using FastAPI, Anthropic SDK, and Next.js, enabling natural language queries over 60+ years of environmental records with live weather retrieval and historical trend analysis.',
+    tech: ['Claude Sonnet', 'FastAPI', 'Next.js'],
+    image: '/Images/HB_Hero.png',
+    github: 'https://hbf-agent.vercel.app',
+    createdIndex: '08',
+  },
+  {
+    title: 'Enterprise Support Agent',
     year: 'March 2026',
     description: 'Built an Agentic RAG chatbot using Claude Sonnet Anthropic SDK, FAISS vector search, and sentence-transformers for semantic retrieval with citation-grounded responses. Implemented native tool use with multi-turn memory, FastAPI backend, and a React/Vite/Tailwind dashboard UI.',
     tech: ['Claude Sonnet'],
@@ -161,14 +170,16 @@ export default function CS() {
           <span>#</span>
           <span>Project</span>
           <span className="cs-projects__header-year" style={{ textAlign: 'right' }}>Year</span>
-          <span className="cs-projects__header-gh" style={{ textAlign: 'center' }}>Src</span>
           <span className="cs-projects__header-img" style={{ textAlign: 'center' }}>Img</span>
         </div>
 
         {/* Project rows */}
         {visibleProjects.map((p) => (
-          <div
+          <a
             key={p.title}
+            href={p.github || undefined}
+            target="_blank"
+            rel="noopener noreferrer"
             className={`cs-project-row${hoveredTitle === p.title ? ' cs-project-row--active' : ''}`}
             onMouseEnter={() => setHoveredTitle(p.title)}
             onMouseLeave={() => setHoveredTitle(null)}
@@ -181,21 +192,13 @@ export default function CS() {
               </p>
             </div>
             <span className="cs-project-row__year cs-project-row__year--desktop">{p.year}</span>
-            <a
-              href={p.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="cs-project-row__gh cs-project-row__gh--desktop"
-            >
-              [ Link ]
-            </a>
             <img
               src={p.image}
               alt={p.title}
               loading="lazy"
               className="cs-project-row__thumb cs-project-row__thumb--desktop"
             />
-          </div>
+          </a>
         ))}
 
         {/* Blinking cursor */}

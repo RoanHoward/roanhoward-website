@@ -5,8 +5,6 @@ import CS from './pages/CS';
 import Film from './pages/Film';
 import Art from './pages/Art';
 import Home from './pages/Home';
-import Travel from './pages/Travel';
-import Tlingit from './pages/Tlingit';
 import './index.css';
 
 function ViewTransitionWrapper({ children }) {
@@ -29,8 +27,6 @@ function AppRoutes() {
         <Route path="/cs"      element={<div className="page-enter"><CS /></div>} />
         <Route path="/film"    element={<div className="page-enter"><Film /></div>} />
         <Route path="/art"     element={<div className="page-enter"><Art /></div>} />
-        <Route path="/travel"  element={<div className="page-enter"><Travel /></div>} />
-        <Route path="/tlingit" element={<div className="page-enter"><Tlingit /></div>} />
       </Routes>
     </ViewTransitionWrapper>
   );

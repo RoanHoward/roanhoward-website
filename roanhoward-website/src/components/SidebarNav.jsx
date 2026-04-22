@@ -2,11 +2,9 @@ import { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import './SidebarNav.css';
 const NAV_LINKS = [
-  { to: '/cs',      label: 'CS' },
-  { to: '/film',    label: 'Film' },
-  { to: '/art',     label: 'Art' },
-  { to: '/travel',  label: 'Travel' },
-  { to: '/tlingit', label: 'Tlingit' },
+  { to: '/cs',   label: 'CS' },
+  { to: '/film', label: 'Film' },
+  { to: '/art',  label: 'Art' },
 ];
 
 const ICON_LINKS = [
