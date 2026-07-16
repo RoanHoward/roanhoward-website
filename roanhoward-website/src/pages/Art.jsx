@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useStaggerReveal } from '../hooks/useScrollReveal';
 import './Art.css';
 
 const ARTWORKS = [
   {
-    file: 'Charcoal.jpeg',
+    file: 'charcoal.webp',
     alt: 'Control',
     title: 'Control',
     medium: 'Frottage / Charcoal',
@@ -12,7 +12,7 @@ const ARTWORKS = [
     statement: 'Control is a frottage piece and my first-ever art project. I completed this 6-foot-long self-portrait in my first art class at Stanford during the Winter 2025 quarter.',
   },
   {
-    file: 'Head Rest 6 copy.jpg',
+    file: 'head-rest-6.webp',
     alt: 'Head Rest',
     title: 'Head Rest',
     medium: 'Soft Sculpture / Speaker',
@@ -20,7 +20,7 @@ const ARTWORKS = [
     statement: 'Head Rest is a 7.5× enlarged, stuffed car headrest. The soft sculpture contains a speaker that plays car sounds, inviting the audience into the drifting, half-asleep state of falling asleep in the back seat.',
   },
   {
-    file: 'Raven1.jpeg',
+    file: 'raven1.webp',
     alt: 'Raven I',
     title: 'Raven I',
     medium: 'Print',
@@ -28,7 +28,7 @@ const ARTWORKS = [
     statement: 'This first print of a triptych is an homage to the Tlingit story Raven Steals the Sun.',
   },
   {
-    file: 'TrueNature.jpg',
+    file: 'true-nature.webp',
     alt: 'True Nature',
     title: 'True Nature',
     medium: 'Soft Sculpture',
@@ -36,7 +36,7 @@ const ARTWORKS = [
     statement: 'A hand-sewn, stuffed log.',
   },
   {
-    file: 'Raven2.jpeg',
+    file: 'raven2.webp',
     alt: 'Raven II',
     title: 'Raven II',
     medium: 'Print',
@@ -44,7 +44,7 @@ const ARTWORKS = [
     statement: 'Raven II is the second print of the triptych.',
   },
   {
-    file: 'Howard_InstallationView.jpeg',
+    file: 'howard-installation-view.webp',
     alt: 'Traffic Light',
     title: 'Traffic Light',
     medium: 'Wood Sculpture',
@@ -52,7 +52,7 @@ const ARTWORKS = [
     statement: 'My first wood sculpture, learning the basics and tools of the wood shop.',
   },
   {
-    file: 'Raven3.jpeg',
+    file: 'raven3.webp',
     alt: 'Raven III',
     title: 'Raven III',
     medium: 'Print',
@@ -72,9 +72,37 @@ function CloseIcon() {
 export default function Art() {
   const [selected, setSelected] = useState(null);
   const galleryRef = useStaggerReveal();
+  const modalRef = useRef(null);
+  const lastFocusedRef = useRef(null);
 
-  const open = (artwork) => setSelected(artwork);
+  const open = (artwork) => {
+    lastFocusedRef.current = document.activeElement;
+    setSelected(artwork);
+  };
   const close = () => setSelected(null);
+
+  // Escape to close, body scroll-lock, and focus management while open
+  useEffect(() => {
+    if (!selected) return;
+
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') setSelected(null);
+    };
+    document.addEventListener('keydown', onKeyDown);
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    modalRef.current?.focus();
+
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      document.body.style.overflow = previousOverflow;
+      if (lastFocusedRef.current instanceof HTMLElement) {
+        lastFocusedRef.current.focus();
+      }
+    };
+  }, [selected]);
 
   return (
     <div className="art-page">
@@ -89,7 +117,7 @@ export default function Art() {
       <section className="art-gallery section" ref={galleryRef}>
         {ARTWORKS.map((aw, i) => (
           <button
-            key={i}
+            key={aw.file}
             className="art-tile reveal"
             style={{ transitionDelay: `${i * 0.06}s` }}
             onClick={() => open(aw)}
@@ -112,8 +140,16 @@ export default function Art() {
       {/* Modal */}
       {selected && (
         <div className="art-modal-backdrop" onClick={close}>
-          <div className="art-modal" onClick={(e) => e.stopPropagation()}>
-            <button className="art-modal__close" onClick={close} aria-label="Close">
+          <div
+            className="art-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-label={selected.title}
+            ref={modalRef}
+            tabIndex={-1}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button className="art-modal__close" onClick={close} aria-label="Close artwork details">
               <CloseIcon />
             </button>
             <div className="art-modal__image-col">

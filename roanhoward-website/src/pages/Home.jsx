@@ -31,20 +31,14 @@ export default function Home() {
       <section className="bio section" ref={bioRef}>
         <div className="bio__grid">
           <div className="bio__text-col">
-            <h2 className="bio__heading reveal" style={{ '--delay': '0.1s' }}>
+            <h1 className="bio__heading reveal" style={{ '--delay': '0.1s' }}>
               Nice to meet you.
-            </h2>
+            </h1>
             <p className="bio__body reveal" style={{ '--delay': '0.2s' }}>
-              Aaskuwut eesh yóo xát duwasáakw. Yéil áyá xát. K&apos;ineix Kwáan naax xát sitee. Tsisk&apos;w hítdáx áyá xát.
+              Hello! My name is Roan Howard. I am currently 21 years old and a senior at Stanford University. I am completing a major in Computer Science with a focus in artificial intelligence, as well as a minor in Art Practice.
             </p>
             <p className="bio__body reveal" style={{ '--delay': '0.28s' }}>
-              My name is Roan Howard, and my Tlingit name is Aaskuwut eesh. I am Alaskan Native, Raven moiety, of the People of the Copper River Clan from the Owl House. I spent my childhood in a tree-lined suburb of Kirkland, Washington, and now reside in California, where I study and create.
-            </p>
-            <p className="bio__body reveal" style={{ '--delay': '0.36s' }}>
-              I am a junior at Stanford University majoring in Computer Science with a focus in Artificial Intelligence and a minor in Art Practice. I am interested in AI and am actively pushing deeper into areas such as algorithm design, linear algebra, language models, and agentic infrastructure. I feel like I have only scratched the surface of my feild and I am in a rush to learn more. 
-            </p>
-            <p className="bio__body reveal" style={{ '--delay': '0.44s' }}>
-              This site is where I share both my work and my story. There&apos;s more than I can write here feel free to reach out.
+              I grew up in Kirkland, Washington, I&apos;m Tlingit, and I currently live in California for school. I love learning and try to learn as much as possible as fast as I can. A few things I&apos;m interested in right now include film, plants, birds, fitness, machine learning, sculpture, and the German language.
             </p>
           </div>
         </div>
@@ -53,7 +47,9 @@ export default function Home() {
       {/* Full-width Alaska banner */}
       <div className="home__banner reveal-clip" ref={bannerRef}>
         <img
-          src="/Images/Roan_alaska.JPG"
+          src="/Images/roan-alaska.webp"
+          srcSet="/Images/roan-alaska-960.webp 960w, /Images/roan-alaska.webp 1920w"
+          sizes="100vw"
           alt="Alaska"
           loading="lazy"
           className="home__banner-img"

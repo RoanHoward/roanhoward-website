@@ -1,17 +1,8 @@
-/* ── Color system ─────────────────────────────────────────────────
-   #F6F4EF  = page bg (matches site global)
-   #FFFFFF  = table / card bg
-   #DEDAD4  = borders, dividers
-   #141410  = text primary
-   #5C5952  = text secondary
-   #9A9690  = text muted
-   #243D28  = accent forest green
-   #EBF0EB  = accent green light bg / hover
-   ────────────────────────────────────────────────────────────────── */
+/* Colors come from the site design tokens in src/index.css (--color-*). */
 
 /* ── Header ──────────────────────────────────────────────────────── */
 .cs-header {
-  background: #F6F4EF;
+  background: var(--color-bg);
 }
 
 .cs-label {
@@ -19,7 +10,7 @@
   font-size: 0.72rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #243D28;
+  color: var(--color-green);
   margin-bottom: 0.75rem;
 }
 
@@ -29,7 +20,7 @@
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.02em;
-  color: #141410;
+  color: var(--color-text);
   margin-bottom: 0.75rem;
 }
 
@@ -37,12 +28,12 @@
   font-family: var(--font-serif);
   font-style: italic;
   font-size: 1.1rem;
-  color: #5C5952;
+  color: var(--color-text-sub);
 }
 
 /* ── Projects section ─────────────────────────────────────────────── */
 .cs-projects {
-  background: #F6F4EF;
+  background: var(--color-bg);
 }
 
 /* ── Filter bar ───────────────────────────────────────────────────── */
@@ -58,46 +49,42 @@
   font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #5C5952;
+  color: var(--color-text-sub);
   background: transparent;
-  border: 1px solid #DEDAD4;
+  border: 1px solid var(--color-border);
   padding: 0.4rem 1rem;
   cursor: pointer;
   transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
 }
 
 .cs-filter-bar__sort:hover {
-  border-color: #243D28;
-  color: #243D28;
+  border-color: var(--color-green);
+  color: var(--color-green);
 }
 
 .cs-filter-bar__search {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.05em;
-  color: #141410;
-  background: #FFFFFF;
-  border: 1px solid #DEDAD4;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   padding: 0.4rem 1rem;
   width: 220px;
   outline: none;
-  caret-color: #243D28;
+  caret-color: var(--color-green);
   transition: border-color 0.2s ease;
 }
 
 .cs-filter-bar__search::placeholder {
-  color: #9A9690;
+  color: var(--color-text-muted);
 }
 
 .cs-filter-bar__search:focus {
-  border-color: #243D28;
+  border-color: var(--color-green);
 }
 
 /* ── Table wrapper ────────────────────────────────────────────────── */
-.cs-projects__table {
-  background: #FFFFFF;
-  border: 1px solid #DEDAD4;
-}
 
 /* ── Column header ────────────────────────────────────────────────── */
 .cs-projects__header {
@@ -108,12 +95,12 @@
   padding: 0 1.5rem 0.75rem;
   margin-top: 0;
   margin-bottom: 0;
-  border-bottom: 2px solid #141410;
+  border-bottom: 2px solid var(--color-text);
   font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #9A9690;
+  color: var(--color-text-muted);
 }
 
 /* ── Project row ──────────────────────────────────────────────────── */
@@ -124,7 +111,7 @@
   align-items: center;
   padding: 1.75rem 1.5rem;
   margin: 0;
-  border-bottom: 1px solid #DEDAD4;
+  border-bottom: 1px solid var(--color-border);
   border-left: 3px solid transparent;
   cursor: pointer;
   color: inherit;
@@ -132,13 +119,18 @@
   transition: background-color 0.2s ease, border-left-color 0.2s ease, padding-left 0.2s ease;
 }
 
-.cs-project-row:last-of-type {
+.cs-project-row:has(+ .cs-cursor) {
   border-bottom: none;
 }
 
-.cs-project-row--active {
-  background-color: #EBF0EB;
-  border-left-color: #243D28;
+/* Rows without an external link */
+.cs-project-row--static {
+  cursor: default;
+}
+
+.cs-project-row:not(.cs-project-row--static):hover {
+  background-color: var(--color-green-light);
+  border-left-color: var(--color-green);
   margin-left: -3px;
   padding-left: calc(1.5rem + 3px);
 }
@@ -147,12 +139,12 @@
 .cs-project-row__index {
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  color: #9A9690;
+  color: var(--color-text-muted);
   transition: color 0.2s ease;
 }
 
-.cs-project-row--active .cs-project-row__index {
-  color: #243D28;
+.cs-project-row:not(.cs-project-row--static):hover .cs-project-row__index {
+  color: var(--color-green);
 }
 
 /* Title + description */
@@ -164,32 +156,32 @@
   font-family: var(--font-sans);
   font-weight: 700;
   font-size: 1.05rem;
-  color: #141410;
+  color: var(--color-text);
   margin: 0 0 0.35rem 0;
   transition: color 0.2s ease;
 }
 
-.cs-project-row--active .cs-project-row__title {
-  color: #243D28;
+.cs-project-row:not(.cs-project-row--static):hover .cs-project-row__title {
+  color: var(--color-green);
 }
 
 .cs-project-row__desc {
   font-family: var(--font-sans);
   font-size: 0.9rem;
-  color: #5C5952;
+  color: var(--color-text-sub);
   line-height: 1.7;
   margin: 0;
   transition: color 0.2s ease;
 }
 
-.cs-project-row--active .cs-project-row__desc {
-  color: #141410;
+.cs-project-row:not(.cs-project-row--static):hover .cs-project-row__desc {
+  color: var(--color-text);
 }
 
 /* Inline tech highlight */
 .tech-highlight {
-  background: #EBF0EB;
-  color: #243D28;
+  background: var(--color-green-light);
+  color: var(--color-green);
   font-weight: 600;
   border-radius: 2px;
   padding: 0.1rem 0.3rem;
@@ -201,14 +193,14 @@
 .cs-project-row__year {
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  color: #9A9690;
+  color: var(--color-text-muted);
   white-space: nowrap;
   text-align: right;
   transition: color 0.2s ease;
 }
 
-.cs-project-row--active .cs-project-row__year {
-  color: #243D28;
+.cs-project-row:not(.cs-project-row--static):hover .cs-project-row__year {
+  color: var(--color-green);
 }
 
 /* Thumbnail */
@@ -218,7 +210,7 @@
   object-fit: cover;
   display: block;
   margin: 0 auto;
-  border: 1px solid #DEDAD4;
+  border: 1px solid var(--color-border);
   border-radius: 2px;
   align-self: center;
   transition: border-color 0.2s ease;
@@ -230,7 +222,7 @@
 .cs-cursor {
   font-family: var(--font-mono);
   font-size: 1rem;
-  color: #243D28;
+  color: var(--color-green);
   padding: 0.75rem 1.5rem;
   animation: cs-blink 1s step-end infinite;
   user-select: none;
@@ -243,8 +235,8 @@
 
 /* ── Skills ──────────────────────────────────────────────────────── */
 .cs-skills {
-  background: #FFFFFF;
-  border-top: 1px solid #DEDAD4;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
 }
 
 .cs-skills__inner {
@@ -258,8 +250,8 @@
   font-size: 0.7rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #243D28;
-  border-bottom: 1px solid #DEDAD4;
+  color: var(--color-green);
+  border-bottom: 1px solid var(--color-border);
   padding-bottom: 0.6rem;
   margin-bottom: 1rem;
 }
@@ -274,7 +266,7 @@
 .cs-skills__list li {
   font-family: var(--font-sans);
   font-size: 0.9rem;
-  color: #5C5952;
+  color: var(--color-text-sub);
   padding-left: 1em;
   position: relative;
 }
@@ -283,7 +275,7 @@
   content: '–';
   position: absolute;
   left: 0;
-  color: #DEDAD4;
+  color: var(--color-border);
 }
 
 /* ── Responsive ─────────────────────────────────────────────────── */
@@ -303,11 +295,9 @@
     padding-right: 1rem;
   }
 
-  /* Hide image and github on mobile */
+  /* Hide image column on mobile */
   .cs-projects__header-img,
-  .cs-projects__header-gh,
-  .cs-project-row__thumb--desktop,
-  .cs-project-row__gh--desktop {
+  .cs-project-row__thumb--desktop {
     display: none;
   }
 

@@ -2,7 +2,7 @@
 .film-hero {
   position: relative;
   height: 70vh;
-  background-image: url('/Images/SN.png');
+  background-image: url('/Images/sn.webp');
   background-size: cover;
   background-position: center;
   display: flex;

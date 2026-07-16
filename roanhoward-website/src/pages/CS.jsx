@@ -4,11 +4,20 @@ import './CS.css';
 
 const PROJECTS = [
   {
-    title: 'https://www.thedailybrainiac.com',
+    title: 'NewZ',
+    year: 'April 2026',
+    description: 'NewZ turns the footage people are already recording into multi-angle local news. No editing, no captions, no profiles. Just point, shoot, and AI does the rest. Consumer Product Winner at HackTech 2026 at Caltech, built using Python, TypeScript, and a multi-agent pipeline of Gemini, Marengo, and Claude.',
+    tech: ['Python'],
+    image: '/Images/newz.webp',
+    github: 'https://newz-8btsapoup-liam-shaloms-projects.vercel.app/feed',
+    createdIndex: '09',
+  },
+  {
+    title: 'The Daily Brainiac',
     year: 'February 2026',
     description: 'Built and deployed a full-stack daily word game using Next.js, PostgreSQL, and OpenAI GPT-4o, featuring real-time AI answer validation, automated bot simulation, and a Vercel cron pipeline for daily content delivery. Engineered a serverless REST API with Prisma ORM and Supabase, implementing NextAuth v5 with Google OAuth, transactional email via Resend, CDN caching, and open-ended input handling at scale.',
     tech: ['Supabase', 'GPT-4o'],
-    image: '/Images/brainiac.png',
+    image: '/Images/brainiac.webp',
     github: 'https://thedailybrainiac.com',
     createdIndex: '05',
   },
@@ -17,7 +26,7 @@ const PROJECTS = [
     year: 'March 2025',
     description: 'A probability-based person-guessing game where users identify Stanford students from dynamically generated clues. Full-stack: React frontend, Node.js middleware, Python Flask backend.',
     tech: ['Python', 'Flask'],
-    image: '/Images/stanfanator.png',
+    image: '/Images/stanfanator.webp',
     github: '',
     createdIndex: '01',
   },
@@ -26,25 +35,25 @@ const PROJECTS = [
     year: 'February 2026',
     description: 'In 12 hours, built a video-reasoning robotics referee designed around the Stanford IPRL Lab data set using Python, FastAPI backend, Next.js frontend, Cosmos Reason API, OpenAI vision models, structured JSON evaluation schemas, and Dockerized local deployment, automatically auditing robot demonstration videos against goal and rule constraints.',
     tech: ['Python', 'Cosmos Reason API'],
-    image: '/Images/RobotRef.png',
+    image: '/Images/robotref.webp',
     github: 'https://github.com/RoanHoward/referee',
     createdIndex: '03',
   },
   {
     title: 'Valid',
-    year: 'Febuary 2026',
+    year: 'February 2026',
     description: 'In 24 hours, engineered AI-powered semantic search using OpenAI embeddings and PostgreSQL pgvector to match user queries. Built full-stack anonymous polling system with Next.js 14, Supabase, and TypeScript enabling real-time voting, community-driven summaries via GPT-4, and browser fingerprinting for fraud prevention.',
     tech: ['OpenAI embeddings','Supabase'],
-    image: '/Images/Valid.png',
+    image: '/Images/valid.webp',
     github: 'https://github.com/RoanHoward/valid',
     createdIndex: '04',
   },
   {
     title: 'Personal Website',
     year: 'June 2025',
-    description: 'Built this site from scratch using React and Vite — a personal lab for experimenting with modern UI patterns, scroll animations, and design systems.',
+    description: 'Built this site from scratch using React and Vite, a personal lab for experimenting with modern UI patterns, scroll animations, and design systems.',
     tech: ['React', 'Vite', 'CSS'],
-    image: '/Images/Personal_website.png',
+    image: '/Images/personal-website.webp',
     github: 'https://roanhoward.com',
     createdIndex: '02',
   },
@@ -53,7 +62,7 @@ const PROJECTS = [
     year: 'February 2026',
     description: 'Engineered a multi-tool LLM agent leveraging DSPy ReAct, Mixtral-8x7B, and cosine-similarity collaborative filtering for real-time movie recommendations and ticket booking. Augmented agent with Agentic RAG capabilities via SerpAPI retrieval and Mem0 semantic memory using Qdrant vector store and Alibaba-NLP dense embeddings on Together AI.',
     tech: ['DSPy','SerpAPI','Together AI'],
-    image: '/Images/Pa_7.png',
+    image: '/Images/pa-7.webp',
     github: '',
     createdIndex: '06',
   },
@@ -62,7 +71,7 @@ const PROJECTS = [
     year: 'April 2026',
     description: 'Built and deployed a full-stack AI agent, submitted to the 2026 Hubbard Brook Data Jam. Engineered a multi-tool Claude Sonnet backend using FastAPI, Anthropic SDK, and Next.js, enabling natural language queries over 60+ years of environmental records with live weather retrieval and historical trend analysis.',
     tech: ['Claude Sonnet', 'FastAPI', 'Next.js'],
-    image: '/Images/HB_Hero.png',
+    image: '/Images/hb-hero.webp',
     github: 'https://hbf-agent.vercel.app',
     createdIndex: '08',
   },
@@ -71,7 +80,7 @@ const PROJECTS = [
     year: 'March 2026',
     description: 'Built an Agentic RAG chatbot using Claude Sonnet Anthropic SDK, FAISS vector search, and sentence-transformers for semantic retrieval with citation-grounded responses. Implemented native tool use with multi-turn memory, FastAPI backend, and a React/Vite/Tailwind dashboard UI.',
     tech: ['Claude Sonnet'],
-    image: '/Images/Support_genie.png',
+    image: '/Images/support-genie.webp',
     github: 'https://github.com/RoanHoward/SupportGenie',
     createdIndex: '07',
   },
@@ -125,7 +134,6 @@ function highlightTech(description, tech) {
 }
 
 export default function CS() {
-  const [hoveredTitle, setHoveredTitle] = useState(null);
   const [sortAsc, setSortAsc] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const skillsRef = useStaggerReveal();
@@ -174,32 +182,42 @@ export default function CS() {
         </div>
 
         {/* Project rows */}
-        {visibleProjects.map((p) => (
-          <a
-            key={p.title}
-            href={p.github || undefined}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`cs-project-row${hoveredTitle === p.title ? ' cs-project-row--active' : ''}`}
-            onMouseEnter={() => setHoveredTitle(p.title)}
-            onMouseLeave={() => setHoveredTitle(null)}
-          >
-            <span className="cs-project-row__index">{p.createdIndex}</span>
-            <div className="cs-project-row__info">
-              <p className="cs-project-row__title">{p.title}</p>
-              <p className="cs-project-row__desc">
-                {highlightTech(p.description, p.tech)}
-              </p>
+        {visibleProjects.map((p) => {
+          const rowContent = (
+            <>
+              <span className="cs-project-row__index">{p.createdIndex}</span>
+              <div className="cs-project-row__info">
+                <p className="cs-project-row__title">{p.title}</p>
+                <p className="cs-project-row__desc">
+                  {highlightTech(p.description, p.tech)}
+                </p>
+              </div>
+              <span className="cs-project-row__year cs-project-row__year--desktop">{p.year}</span>
+              <img
+                src={p.image}
+                alt={p.title}
+                loading="lazy"
+                className="cs-project-row__thumb cs-project-row__thumb--desktop"
+              />
+            </>
+          );
+
+          return p.github ? (
+            <a
+              key={p.title}
+              href={p.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cs-project-row"
+            >
+              {rowContent}
+            </a>
+          ) : (
+            <div key={p.title} className="cs-project-row cs-project-row--static">
+              {rowContent}
             </div>
-            <span className="cs-project-row__year cs-project-row__year--desktop">{p.year}</span>
-            <img
-              src={p.image}
-              alt={p.title}
-              loading="lazy"
-              className="cs-project-row__thumb cs-project-row__thumb--desktop"
-            />
-          </a>
-        ))}
+          );
+        })}
 
         {/* Blinking cursor */}
         <div className="cs-cursor" aria-hidden="true">█</div>

@@ -1,34 +1,17 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import SidebarNav from './components/SidebarNav';
 import CS from './pages/CS';
 import Film from './pages/Film';
 import Art from './pages/Art';
 import Home from './pages/Home';
-import './index.css';
 
-function ViewTransitionWrapper({ children }) {
-  const location = useLocation();
-
-  useEffect(() => {
-    if (!document.startViewTransition) return;
-    // View transition is triggered by React Router navigation naturally;
-    // this effect runs after navigation to ensure page-enter plays.
-  }, [location.pathname]);
-
-  return children;
-}
-
-function AppRoutes() {
+function NotFound() {
   return (
-    <ViewTransitionWrapper>
-      <Routes>
-        <Route path="/"        element={<div className="page-enter"><Home /></div>} />
-        <Route path="/cs"      element={<div className="page-enter"><CS /></div>} />
-        <Route path="/film"    element={<div className="page-enter"><Film /></div>} />
-        <Route path="/art"     element={<div className="page-enter"><Art /></div>} />
-      </Routes>
-    </ViewTransitionWrapper>
+    <div className="not-found">
+      <p className="not-found__code">404</p>
+      <h1 className="not-found__title">Page not found</h1>
+      <Link to="/" className="not-found__link">Back home</Link>
+    </div>
   );
 }
 
@@ -36,7 +19,13 @@ function App() {
   return (
     <Router>
       <SidebarNav />
-      <AppRoutes />
+      <Routes>
+        <Route path="/"     element={<div className="page-enter"><Home /></div>} />
+        <Route path="/cs"   element={<div className="page-enter"><CS /></div>} />
+        <Route path="/film" element={<div className="page-enter"><Film /></div>} />
+        <Route path="/art"  element={<div className="page-enter"><Art /></div>} />
+        <Route path="*"     element={<div className="page-enter"><NotFound /></div>} />
+      </Routes>
     </Router>
   );
 }

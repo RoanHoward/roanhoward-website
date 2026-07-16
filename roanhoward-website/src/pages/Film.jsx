@@ -4,15 +4,15 @@ import './Film.css';
 const PAPERS = [
   {
     index: '01',
-    poster: '/Images/emotions.png',
+    poster: '/Images/emotions.webp',
     film: 'Atlantics',
     director: 'Mati Diop',
     title: 'Emotions of a Fading Generation: Mise-en-Scène and Narrative in Atlantics',
-    pdf: '/Images/Alantics.pdf',
+    pdf: '/Images/Atlantics.pdf',
   },
   {
     index: '02',
-    poster: '/Images/poli.png',
+    poster: '/Images/poli.webp',
     film: 'Lovers Rock',
     director: 'Steve McQueen',
     title: 'The Politics of Love in Motion: Music, Movement and Gender in Lovers Rock',
@@ -20,7 +20,7 @@ const PAPERS = [
   },
   {
     index: '03',
-    poster: '/Images/parasite.png',
+    poster: '/Images/parasite.webp',
     film: 'Parasite',
     director: 'Bong Joon-ho',
     title: 'A Dream Deferred: Bong Joon-ho and Parasite',

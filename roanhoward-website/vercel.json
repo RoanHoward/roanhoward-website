@@ -29,9 +29,8 @@
   ],
   "rewrites": [
     {
-      "source": "/Images/:path*",
-      "destination": "/Images/:path*"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
-

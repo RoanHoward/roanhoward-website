@@ -129,11 +129,11 @@
 
 .art-modal__close {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 0.75rem;
+  right: 0.75rem;
   z-index: 10;
   color: var(--color-text-sub);
-  padding: 0.25rem;
+  padding: 0.85rem;
   transition: color 0.2s ease;
 }
 

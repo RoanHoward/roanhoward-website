@@ -122,22 +122,68 @@ button {
   animation: pageEnter 0.45s var(--ease-out-expo) both;
 }
 
-/* ── View Transitions ──────────────────────────────────────────── */
-@keyframes fadeOut {
-  to { opacity: 0; }
+/* ── 404 Page ──────────────────────────────────────────────────── */
+.not-found {
+  min-height: calc(100vh - var(--nav-height));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  text-align: center;
+  padding: 2rem;
 }
 
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
+.not-found__code {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  color: var(--color-green);
+}
+
+.not-found__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.15;
+}
+
+.not-found__link {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--color-green);
+  border-bottom: 1px solid var(--color-green);
+  transition: opacity 0.2s ease;
+}
+
+.not-found__link:hover {
+  opacity: 0.7;
+}
+
+/* ── Reduced Motion ────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-}
 
-::view-transition-old(root) {
-  animation: fadeOut 300ms ease both;
-}
+  .reveal,
+  .reveal-left,
+  .reveal-clip,
+  .page-enter,
+  .home__scroll-indicator,
+  .cs-cursor {
+    animation: none;
+    transition: none;
+  }
 
-::view-transition-new(root) {
-  animation: slideIn 400ms var(--ease-out-expo) both;
+  .reveal,
+  .reveal-left {
+    opacity: 1;
+    transform: none;
+  }
+
+  .reveal-clip {
+    clip-path: inset(0 0 0 0);
+  }
 }

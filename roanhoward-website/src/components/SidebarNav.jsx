@@ -9,7 +9,7 @@ const NAV_LINKS = [
 
 const ICON_LINKS = [
   { href: '/Images/Resume_RoanHoward.pdf',                    label: 'Resume',  download: 'Resume_RoanHoward.pdf' },
-  { href: 'http://www.linkedin.com/in/roan-howard-b7647a28b', label: 'LinkedIn',external: true  },
+  { href: 'https://www.linkedin.com/in/roan-howard-b7647a28b', label: 'LinkedIn',external: true  },
   { href: 'https://github.com/roanhoward',                    label: 'GitHub',  external: true  },
   { href: 'mailto:roanahoward@gmail.com',                     label: 'Email'                    },
 ];
@@ -55,6 +55,16 @@ function SidebarNav() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Close the mobile menu on Escape
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') setMenuOpen(false);
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [menuOpen]);
+
   const close = () => setMenuOpen(false);
 
   return (
@@ -62,7 +72,8 @@ function SidebarNav() {
       <button
         className={`menu-button${menuOpen ? ' menu-button--open' : ''}`}
         onClick={() => setMenuOpen(p => !p)}
-        aria-label="Toggle menu"
+        aria-label="Toggle navigation menu"
+        aria-expanded={menuOpen}
       >
         <span />
         <span />
